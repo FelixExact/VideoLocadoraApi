@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FD.Videolocadora.Application.Interfaces;
-using FD.Videolocadora.Application.Models;
 using FD.Videolocadora.Domain.Entities;
 using FD.Videolocadora.Domain.Interfaces.Services;
 using FD.Videolocadora.Infra.Data.Interface;
@@ -13,52 +12,53 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application
 {
-    public class GeneroAppService : AppService, IGeneroAppService
+    public class GeneroAppService : EntityAppService<Genero>
     {
-        private readonly IGeneroService _service;
+        private readonly IEntityService<Genero> _service;
 
-        public GeneroAppService(IGeneroService service, IUnitOfWork uow)
-            :base(uow)
+
+        public GeneroAppService(IEntityService<Genero> service, IUnitOfWork uow)
+            :base(service ,uow)
         {
             _service = service;
         }
 
 
 
-        public void Adicionar(GeneroModel generoModel)
-        {
-            var genero = Mapper.Map<GeneroModel, Genero>(generoModel);
-
-            BeginTransaction();
-            _service.Adicionar(genero);
-            Commit();
-        }
-
-        public GeneroModel Atualizar(GeneroModel genero)
-        {
-            _service.Atualizar(Mapper.Map<GeneroModel, Genero>(genero));
-            return genero;
-        }
-
-        public GeneroModel ObterPorId(Guid id)
-        {
-            return Mapper.Map<Genero,GeneroModel > (_service.ObterPorId(id));
-        }
-
-        public IEnumerable<GeneroModel> ObterTodos()
-        {
-            return Mapper.Map<IEnumerable<Genero>,IEnumerable<GeneroModel>>(_service.ObterTodos());
-        }
-
-        public void Remover(Guid id)
-        {
-            _service.Remover(id);
-        }
-
-        public void Dispose()
-        {
-            _service.Dispose();
-            GC.SuppressFinalize(this);
-        }
+        //public void Adicionar(Genero generoModel)
+        //{
+        //    var genero = generoModel;
+        //
+        //    BeginTransaction();
+        //    _service.Adicionar(genero);
+        //    Commit();
+        //}
+        //
+        //public Genero Atualizar(Genero genero)
+        //{
+        //    _service.Atualizar(genero);
+        //    return genero;
+        //}
+        //
+        //public Genero ObterPorId(Guid id)
+        //{
+        //    return _service.ObterPorId(id);
+        //}
+        //
+        //public IEnumerable<Genero> ObterTodos()
+        //{
+        //    return _service.ObterTodos();
+        //}
+        //
+        //public void Remover(Guid id)
+        //{
+        //    _service.Remover(id);
+        //}
+        //
+        //public void Dispose()
+        //{
+        //    _service.Dispose();
+        //    GC.SuppressFinalize(this);
+        //}
     }
 }

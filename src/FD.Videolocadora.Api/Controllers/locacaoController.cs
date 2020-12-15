@@ -1,6 +1,7 @@
 ﻿using FD.Videolocadora.Application;
 using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
+using FD.Videolocadora.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace FD.Videolocadora.Api.Controllers
 {
     public class locacaoController : ApiController
     {
-        private readonly IlocacaoAppService _appService;
-        public locacaoController(IlocacaoAppService appService)
+        private readonly IEntityAppService<Locacao> _appService;
+        public locacaoController(IEntityAppService<Locacao> appService)
         {
             _appService = appService;
         }
@@ -52,7 +53,8 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
-                _appService.Adicionar(value);
+                Locacao l = value.ToEntity();
+                _appService.Adicionar(l);
                 return Ok();
             }
             catch
@@ -63,12 +65,12 @@ namespace FD.Videolocadora.Api.Controllers
         }
 
         // PUT: api/locacao/5
-        public IHttpActionResult Put(Guid id, [FromBody] LocacaoModel value)
+        public IHttpActionResult Put(Guid id, [FromBody] Locacao value)
         {
             
             try
             {
-                LocacaoModel novo = new LocacaoModel();
+                Locacao novo = new Locacao();
                 novo.FilmeId = value.FilmeId;
                 novo.UsuarioId = value.UsuarioId;
                 novo.DataDevolucao = value.DataDevolucao;

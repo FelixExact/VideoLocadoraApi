@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FD.Videolocadora.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,16 @@ namespace FD.Videolocadora.Application.Models
         public DateTime DataDevolucao { get; set; }
         public Guid FilmeId { get; set; }
         public Guid UsuarioId { get; set; }
+
+        public Locacao ToEntity()
+        {
+            return new Locacao()
+            {
+                LocacaoId = LocacaoId,
+                DataDevolucao = DataDevolucao,
+                FilmeId = FilmeId,
+                UsuarioId = UsuarioId
+            };
+        }
     }
 }

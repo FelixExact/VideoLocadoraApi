@@ -14,6 +14,5 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
         IEnumerable<Genero> ObterTodos();
         Genero Atualizar(Genero Genero);
         void Remover(Guid id);
-        void Dispose();
     }
 }

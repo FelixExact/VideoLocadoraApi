@@ -1,4 +1,4 @@
-﻿using FD.Videolocadora.Application.Models;
+﻿
 using FD.Videolocadora.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,10 +10,10 @@ namespace FD.Videolocadora.Application.Interfaces
 {
     public interface IUsuarioAppService
     {
-        UsuarioModel Adicionar(UsuarioModel Usuario);
-        UsuarioModel ObterPorId(Guid id);
-        IEnumerable<UsuarioModel> ObterTodos();
-        UsuarioModel Atualizar(UsuarioModel Usuario);
+        Usuario Adicionar(Usuario Usuario);
+        Usuario ObterPorId(Guid id);
+        IEnumerable<Usuario> ObterTodos();
+        Usuario Atualizar(Usuario Usuario);
         
         void Remover(Guid id);
         void Dispose();

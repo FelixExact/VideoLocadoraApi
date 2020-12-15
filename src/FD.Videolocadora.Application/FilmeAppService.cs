@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FD.Videolocadora.Application.Interfaces;
-using FD.Videolocadora.Application.Models;
 using FD.Videolocadora.Domain.Entities;
 using FD.Videolocadora.Domain.Interfaces.Services;
 using FD.Videolocadora.Infra.Data.Interface;
@@ -13,50 +12,51 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application
 {
-    public class FilmeAppService : AppService, IFilmeAppService
+    public class FilmeAppService : EntityAppService<Filme>
     {
-        private readonly IFilmeService _service;
+        private readonly IEntityService<Filme> _service;
 
-        public FilmeAppService(IFilmeService service,IUnitOfWork uow)
-            : base(uow)
+
+        public FilmeAppService(IEntityService<Filme> service, IUnitOfWork uow)
+            : base(service, uow)
         {
             _service = service;
         }
 
-        public void Adicionar(FilmeModel filmeModel)
-        {
-            var filme = Mapper.Map<FilmeModel, Filme>(filmeModel);
-        BeginTransaction();
-            _service.Adicionar(filme);
-        Commit();
-    }
-
-        public FilmeModel Atualizar(FilmeModel filme)
-        {
-            _service.Atualizar(Mapper.Map<FilmeModel, Filme>(filme));
-            return filme;
-        }
-
-        public void Dispose()
-        {
-            _service.Dispose();
-            GC.SuppressFinalize(this);
-        }
-
-        public FilmeModel ObterPorId(Guid id)
-        {
-            return Mapper.Map <Filme, FilmeModel> (_service.ObterPorId(id));
-        }
-
-        public IEnumerable<FilmeModel> ObterTodos()
-        {
-            return Mapper.Map<IEnumerable<Filme>, IEnumerable<FilmeModel>>(_service.ObterTodos());
-        }
-
-        public void Remover(Guid id)
-        {
-            _service.Remover(id);
-        }
+        //public void Adicionar(Filme filmeModel)
+        //{
+        //    var filme = filmeModel;
+        //BeginTransaction();
+        //    _service.Adicionar(filme);
+        //Commit();
+       //
+        //
+        //public Filme Atualizar(Filme filme)
+        //{
+        //    _service.Atualizar(filme);
+        //    return filme;
+        //}
+        //
+        //public void Dispose()
+        //{
+        //    _service.Dispose();
+        //    GC.SuppressFinalize(this);
+        //}
+        //
+        //public Filme ObterPorId(Guid id)
+        //{
+        //    return _service.ObterPorId(id);
+        //}
+        //
+        //public IEnumerable<Filme> ObterTodos()
+        //{
+        //    return _service.ObterTodos();
+        //}
+        //
+        //public void Remover(Guid id)
+        //{
+        //    _service.Remover(id);
+        //}
 
     }
 }

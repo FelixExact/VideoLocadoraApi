@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FD.Videolocadora.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,19 @@ namespace FD.Videolocadora.Application.Models
         public int Ativo { get; set; }
 
         public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
+        public Usuario ToEntity()
+        {
+            return new Usuario()
+            {
+                Usuarioid = Usuarioid,
+                Nome = Nome,
+                CPF = CPF,
+                Endereco = Endereco,
+                DataNascimento = DataNascimento,
+                Ativo = 1
+            };
+            
+        }
     }
 }

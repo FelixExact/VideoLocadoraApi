@@ -1,5 +1,6 @@
 ﻿using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
+using FD.Videolocadora.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace FD.Videolocadora.Api.Controllers
 {
     public class FilmeController : ApiController
     {
-        private readonly IFilmeAppService _appService;
+        private readonly IEntityAppService<Filme> _appService;
 
-        public FilmeController(IFilmeAppService appService)
+        public FilmeController(IEntityAppService<Filme> appService)
         {
             _appService = appService;
         }
@@ -56,7 +57,8 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
-                _appService.Adicionar(value);
+                Filme f = value.ToEntity();
+                _appService.Adicionar(f);
                 return Ok();
             }
             catch
@@ -71,7 +73,7 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
-                FilmeModel novo = new FilmeModel();
+                Filme novo = new Filme();
                 novo.FilmeId = id;
                 novo.Nome = value.Nome;
                 novo.GeneroId = value.GeneroId;

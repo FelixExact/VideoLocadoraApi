@@ -1,4 +1,5 @@
 ﻿using DomainValidation.Validation;
+using FD.Videolocadora.Domain.Validations.Documentos;
 using FD.Videolocadora.Domain.Validations.Usuarios;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,9 @@ namespace FD.Videolocadora.Domain.Entities
         public int Ativo { get; set; }
         public ValidationResult ValidationResult { get; set; }
 
-        public bool IsValid()
+        public static void Valido(string CpfValido)
         {
-            ValidationResult = new UsuarioEstaConsistenteValidation().Validate(this);
-            return ValidationResult.IsValid;// se for = 0, esta valido, sem erro!
+            CPFValidation.Validar(CpfValido);
         }
     }
 }

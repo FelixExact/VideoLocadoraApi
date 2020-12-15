@@ -1,6 +1,7 @@
 ﻿using FD.Videolocadora.Application;
 using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
+using FD.Videolocadora.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,8 @@ namespace FD.Videolocadora.Api.Controllers
 {
     public class UsuarioController : ApiController
     {
-        private readonly IUsuarioAppService _appService;
-        public UsuarioController(IUsuarioAppService appService)
+        private readonly IEntityAppService<Usuario> _appService;
+        public UsuarioController(IEntityAppService<Usuario> appService)
         {
             _appService = appService;
         }
@@ -49,27 +50,17 @@ namespace FD.Videolocadora.Api.Controllers
          //POST: api/Usuario
         public IHttpActionResult Post([FromBody] UsuarioModel value)
         {
-            try
-            {
-                UsuarioModel model =_appService.Adicionar(value);
-                if (!model.ValidationResult.IsValid) 
-                {
-                    String RetornoErro = "";
-                    foreach (var erro in model.ValidationResult.Erros)
-                    {
-                        RetornoErro = RetornoErro + " " + erro.Message;
-
-                        //erro (string.empty, erro.message)
-                    }
-                    return BadRequest(RetornoErro);
-                }
+            //try
+            //{
+                Usuario u = value.ToEntity();
+                Usuario model =_appService.Adicionar(u);
                 return Ok("Sucesso!!");
 
-            }
-            catch
-            {
-                return BadRequest("Aconteceu um erro!");
-            }
+          //  }
+          //  catch
+          //  {
+          //      return BadRequest("Aconteceu um erro!");
+          //  }
         }
         
         // PUT: api/Usuario/5
@@ -78,7 +69,7 @@ namespace FD.Videolocadora.Api.Controllers
             
             try
             {
-                UsuarioModel novo = new UsuarioModel();
+                Usuario novo = new Usuario();
                 novo.Usuarioid = id;
                 novo.CPF = value.CPF;
                 novo.DataNascimento = value.DataNascimento;
@@ -88,9 +79,9 @@ namespace FD.Videolocadora.Api.Controllers
                 _appService.Atualizar(novo);
                 return Ok();
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Aconteceu um erro!");
+                return BadRequest(e.Message);
             }
             
         }

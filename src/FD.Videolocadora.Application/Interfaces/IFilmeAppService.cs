@@ -1,4 +1,4 @@
-﻿using FD.Videolocadora.Application.Models;
+﻿
 using FD.Videolocadora.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,10 +10,10 @@ namespace FD.Videolocadora.Application.Interfaces
 {
     public interface IFilmeAppService
     {
-        void Adicionar(FilmeModel Filme);
-        FilmeModel ObterPorId(Guid id);
-        IEnumerable<FilmeModel> ObterTodos();
-        FilmeModel Atualizar(FilmeModel Filme);
+        void Adicionar(Filme Filme);
+        Filme ObterPorId(Guid id);
+        IEnumerable<Filme> ObterTodos();
+        Filme Atualizar(Filme Filme);
 
         void Remover(Guid id);
         void Dispose();

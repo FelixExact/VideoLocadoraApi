@@ -73,20 +73,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppService.cs" />
-    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
-    <Compile Include="AutoMapper\DomainToModelMappingProfile.cs" />
-    <Compile Include="AutoMapper\ModelToDomainMappingProfile.cs" />
+    <Compile Include="EntityAppService.cs" />
     <Compile Include="FilmeAppService.cs" />
     <Compile Include="GeneroAppService.cs" />
+    <Compile Include="Interfaces\IEntityAppService.cs" />
     <Compile Include="Interfaces\IFilmeAppService.cs" />
     <Compile Include="Interfaces\IGeneroAppService.cs" />
     <Compile Include="Interfaces\IlocacaoAppService.cs" />
     <Compile Include="Interfaces\IUsuarioAppService.cs" />
     <Compile Include="LocacaoAppService.cs" />
-    <Compile Include="Models\FilmeModel.cs" />
-    <Compile Include="Models\GeneroModel.cs" />
-    <Compile Include="Models\LocacaoModel.cs" />
-    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioAppService.cs" />
   </ItemGroup>
@@ -105,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppService\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

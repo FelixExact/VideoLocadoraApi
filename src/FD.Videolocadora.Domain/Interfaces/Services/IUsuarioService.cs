@@ -15,6 +15,5 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
         Usuario Atualizar(Usuario Usuario);
 
         void Remover(Guid id);
-        void Dispose();
     }
 }

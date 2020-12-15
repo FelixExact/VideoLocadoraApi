@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FD.Videolocadora.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,17 @@ namespace FD.Videolocadora.Application.Models
         public double Valor { get; set; }
         public int Disponivel { get; set; }
         public Guid GeneroId { get; set; }
+
+        internal Filme ToEntity()
+        {
+            return new Filme()
+            {
+                FilmeId = FilmeId,
+                Nome = Nome,
+                Valor = Valor,
+                Disponivel = Disponivel,
+                GeneroId = GeneroId
+            };
+        }
     }
 }

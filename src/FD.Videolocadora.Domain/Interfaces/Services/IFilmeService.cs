@@ -15,6 +15,5 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
         Filme Atualizar(Filme Filme);
 
         void Remover(Guid id);
-        void Dispose();
     }
 }

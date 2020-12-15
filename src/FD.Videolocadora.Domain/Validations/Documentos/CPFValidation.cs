@@ -60,5 +60,10 @@ namespace FD.Videolocadora.Domain.Validations.Documentos
 
             return true;
         }
+
+        internal static void Validar(object cPFValido)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

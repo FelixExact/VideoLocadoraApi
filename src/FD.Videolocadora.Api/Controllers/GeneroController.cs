@@ -1,6 +1,7 @@
 ﻿
 using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
+using FD.Videolocadora.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,9 @@ namespace FD.Videolocadora.Api.Controllers
 {
     public class GeneroController : ApiController
     {
-        private readonly IGeneroAppService _generoAppService;
+        private readonly IEntityAppService<Genero> _generoAppService;
 
-        public GeneroController(IGeneroAppService generoAppService)
+        public GeneroController(IEntityAppService<Genero> generoAppService)
         {
             _generoAppService = generoAppService;
         }
@@ -49,12 +50,13 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
-                _generoAppService.Adicionar(value);
+                Genero g = value.ToEntity();
+                _generoAppService.Adicionar(g);
                 return Ok();
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Aconteceu um erro!");
+                return BadRequest(e.Message);
             }
 
         }
@@ -66,7 +68,7 @@ namespace FD.Videolocadora.Api.Controllers
 
             try
             {
-                GeneroModel novoGenero = new GeneroModel();
+                Genero novoGenero = new Genero();
                 novoGenero.GeneroId = id;
                 novoGenero.Nome = value.Nome;
                 _generoAppService.Atualizar(novoGenero);
