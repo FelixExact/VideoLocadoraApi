@@ -26,9 +26,9 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok(_appService.ObterTodos());
 
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Aconteceu um erro!");
+                return BadRequest(e.Message);
             }
         }
 
@@ -41,9 +41,9 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok(_appService.ObterPorId(id));
 
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Aconteceu um erro!");
+                return BadRequest(e.Message);
             }
             
         }
@@ -58,9 +58,9 @@ namespace FD.Videolocadora.Api.Controllers
                 _appService.Adicionar(l);
                 return Ok();
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Aconteceu um erro!");
+                return BadRequest(e.Message);
             }
             
         }
@@ -80,9 +80,9 @@ namespace FD.Videolocadora.Api.Controllers
                 _appService.Atualizar(novo);
                 return Ok();
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Aconteceu um erro!");
+                return BadRequest(e.Message);
             }
         }
 
@@ -96,9 +96,9 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok();
 
             }
-            catch
+            catch(Exception e)
             {
-                return BadRequest("Aconteceu um erro!");
+                return BadRequest(e.Message);
             }
             
         }
