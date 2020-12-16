@@ -9,7 +9,7 @@ namespace FD.Videolocadora.Application.Interfaces
 {
     public interface IlocacaoAppService
     {
-        void Adicionar(Locacao locacao);
+        Locacao Adicionar(Locacao locacao);
         Locacao ObterPorId(Guid id);
         IEnumerable<Locacao> ObterTodos();
         Locacao Atualizar(Locacao locacao);

@@ -1,6 +1,5 @@
 ﻿using DomainValidation.Validation;
 using FD.Videolocadora.Domain.Validations.Documentos;
-using FD.Videolocadora.Domain.Validations.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +21,13 @@ namespace FD.Videolocadora.Domain.Entities
         public string Endereco { get; set; }
         public DateTime DataNascimento { get; set; }
         public int Ativo { get; set; }
-        public ValidationResult ValidationResult { get; set; }
 
-        public static void Valido(string CpfValido)
+        public void Valido()
         {
-            CPFValidation.Validar(CpfValido);
+           if (!(CPFValidation.Validar(CPF)))
+            {
+                throw new Exception("CPF Invalido");
+            }
         }
     }
 }

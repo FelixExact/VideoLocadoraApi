@@ -57,7 +57,9 @@
     <Compile Include="Services\UsuarioService.cs" />
     <Compile Include="Specifications\Usuarios\UsuarioDeveTerCpfValidoSpecification.cs" />
     <Compile Include="Validations\Documentos\CPFValidation.cs" />
+    <Compile Include="Validations\Usuarios\UsuarioCpfExecption.cs" />
     <Compile Include="Validations\Usuarios\UsuarioEstaConsistenteValidation.cs" />
+    <Compile Include="Validations\Usuarios\UsuarioValidoException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

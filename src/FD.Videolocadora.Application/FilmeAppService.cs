@@ -12,31 +12,32 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application
 {
-    public class FilmeAppService : EntityAppService<Filme>
+    public class FilmeAppService : EntityAppService<Filme> ,IFilmeAppService
     {
-        private readonly IEntityService<Filme> _service;
+        private readonly IFilmeService _service;
 
 
-        public FilmeAppService(IEntityService<Filme> service, IUnitOfWork uow)
-            : base(service, uow)
+        public FilmeAppService(IFilmeService service, IEntityService<Filme> services, IUnitOfWork uow)
+            : base(services, uow)
         {
             _service = service;
         }
 
-        //public void Adicionar(Filme filmeModel)
-        //{
-        //    var filme = filmeModel;
-        //BeginTransaction();
-        //    _service.Adicionar(filme);
-        //Commit();
-       //
-        //
-        //public Filme Atualizar(Filme filme)
-        //{
-        //    _service.Atualizar(filme);
-        //    return filme;
-        //}
-        //
+        public override Filme Adicionar(Filme filmeModel)
+        {
+
+            BeginTransaction();
+            var filme = _service.Adicionar(filmeModel);
+            Commit();
+            return filme;
+        }
+        
+        public override Filme Atualizar(Filme filme)
+        {
+            _service.Atualizar(filme);
+            return filme;
+        }
+        
         //public void Dispose()
         //{
         //    _service.Dispose();

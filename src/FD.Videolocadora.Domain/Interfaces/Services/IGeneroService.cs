@@ -9,7 +9,7 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
 {
     public interface IGeneroService : IDisposable
     {
-        void Adicionar(Genero Genero);
+        Genero Adicionar(Genero Genero);
         Genero ObterPorId(Guid id);
         IEnumerable<Genero> ObterTodos();
         Genero Atualizar(Genero Genero);

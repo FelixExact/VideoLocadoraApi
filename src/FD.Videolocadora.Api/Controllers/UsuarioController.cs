@@ -13,8 +13,8 @@ namespace FD.Videolocadora.Api.Controllers
 {
     public class UsuarioController : ApiController
     {
-        private readonly IEntityAppService<Usuario> _appService;
-        public UsuarioController(IEntityAppService<Usuario> appService)
+        private readonly IUsuarioAppService _appService;
+        public UsuarioController(IUsuarioAppService appService)
         {
             _appService = appService;
         }
@@ -50,17 +50,18 @@ namespace FD.Videolocadora.Api.Controllers
          //POST: api/Usuario
         public IHttpActionResult Post([FromBody] UsuarioModel value)
         {
-            //try
-            //{
+            try
+            {
+                if (value == null) { throw new Exception("Json invalido."); }
                 Usuario u = value.ToEntity();
                 Usuario model =_appService.Adicionar(u);
                 return Ok("Sucesso!!");
 
-          //  }
-          //  catch
-          //  {
-          //      return BadRequest("Aconteceu um erro!");
-          //  }
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         
         // PUT: api/Usuario/5
@@ -69,6 +70,7 @@ namespace FD.Videolocadora.Api.Controllers
             
             try
             {
+                if (value == null) { throw new Exception("Json invalido."); }
                 Usuario novo = new Usuario();
                 novo.Usuarioid = id;
                 novo.CPF = value.CPF;

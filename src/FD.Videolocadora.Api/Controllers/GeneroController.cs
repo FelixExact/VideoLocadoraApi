@@ -13,9 +13,9 @@ namespace FD.Videolocadora.Api.Controllers
 {
     public class GeneroController : ApiController
     {
-        private readonly IEntityAppService<Genero> _generoAppService;
+        private readonly IGeneroAppService _generoAppService;
 
-        public GeneroController(IEntityAppService<Genero> generoAppService)
+        public GeneroController(IGeneroAppService generoAppService)
         {
             _generoAppService = generoAppService;
         }
@@ -50,6 +50,8 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
+                if(value == null) { throw new Exception("Json invalido."); }
+
                 Genero g = value.ToEntity();
                 _generoAppService.Adicionar(g);
                 return Ok();
@@ -68,6 +70,7 @@ namespace FD.Videolocadora.Api.Controllers
 
             try
             {
+                if (value == null) { throw new Exception("Json invalido."); }
                 Genero novoGenero = new Genero();
                 novoGenero.GeneroId = id;
                 novoGenero.Nome = value.Nome;

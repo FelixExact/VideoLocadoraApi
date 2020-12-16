@@ -18,5 +18,14 @@ namespace FD.Videolocadora.Domain.Entities
         public Guid UsuarioId { get; set; }
         public virtual Filme Filme { get; set; }
         public virtual Usuario Usuario { get; set; }
+
+
+        public void ValidaNome()
+        {
+            if (!(FilmeId == null) || !(UsuarioId == null))
+            {
+                throw new Exception("Filme e o Usuario são obrigatorios");
+            }
+        }
     }
 }

@@ -9,44 +9,27 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Services
 {
-    public class GeneroService : IGeneroService
+    public class GeneroService : EntityService<Genero>, IGeneroService
     {
         private readonly IRepository<Genero> _Repository;
 
-        public GeneroService(IRepository<Genero> Repository)
+        public GeneroService(IRepository<Genero> Repository):base(Repository)
         {
             _Repository = Repository;
         }
-        public void Adicionar(Genero Genero)
+        public override Genero Adicionar(Genero Genero)
         {
-            _Repository.Adicionar(Genero);
+            Genero.ValidaNome();
+            return _Repository.Adicionar(Genero);
         }
 
-        public Genero Atualizar(Genero Genero)
+        public override Genero Atualizar(Genero Genero)
         {
+            Genero.ValidaNome();
             return _Repository.Atualizar(Genero);
         }
 
-        public void Dispose()
-        {
-            _Repository.Dispose();
-            GC.SuppressFinalize(this);
-        }
 
-        public Genero ObterPorId(Guid id)
-        {
-            return _Repository.ObterPorId(id);
-        }
-
-        public IEnumerable<Genero> ObterTodos()
-        {
-            return _Repository.ObterTodos();
-        }
-
-        public void Remover(Guid id)
-        {
-            _Repository.Remover(id);
-        }
 
     }
 }

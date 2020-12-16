@@ -18,5 +18,15 @@ namespace FD.Videolocadora.Domain.Entities
         public int Disponivel { get; set; }
         public Guid GeneroId { get; set; }
         public virtual Genero Genero { get; set; }
+
+
+        public void ValidaNome()
+        {
+            if (Nome == string.Empty)
+            {
+                throw new Exception("Nome do filme invalido.");
+            }
+        }
+        
     }
 }

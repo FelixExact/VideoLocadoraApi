@@ -9,7 +9,7 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
 {
     public interface ILocacaoService : IDisposable
     {
-        void Adicionar(Locacao locacao);
+        Locacao Adicionar(Locacao locacao);
         Locacao ObterPorId(Guid id);
         IEnumerable<Locacao> ObterTodos();
         Locacao Atualizar(Locacao locacao);

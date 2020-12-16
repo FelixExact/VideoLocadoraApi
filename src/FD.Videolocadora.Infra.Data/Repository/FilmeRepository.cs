@@ -36,15 +36,6 @@ namespace FD.Videolocadora.Infra.Data.Repository
             return cn.Query<Filme>(sql, new { sid = id }).FirstOrDefault();
 
         }
-        public override void Remover(Guid id)
-        {
-            var cn = Db.Database.Connection;
-
-            var sql = @"DELETE FROM Filmes  " +
-                       "WHERE FilmeId = @sid";
-            cn.Execute(sql, new { sid = id });
-
-            SaveChanges();
-        }
+        
     }
 }

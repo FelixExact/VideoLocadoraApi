@@ -11,10 +11,10 @@ using System.Web.Http;
 
 namespace FD.Videolocadora.Api.Controllers
 {
-    public class locacaoController : ApiController
+    public class LocacaoController : ApiController
     {
-        private readonly IEntityAppService<Locacao> _appService;
-        public locacaoController(IEntityAppService<Locacao> appService)
+        private readonly ILocacaoAppService _appService;
+        public LocacaoController(ILocacaoAppService appService)
         {
             _appService = appService;
         }
@@ -53,6 +53,7 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
+                if (value == null) { throw new Exception("Json invalido."); }
                 Locacao l = value.ToEntity();
                 _appService.Adicionar(l);
                 return Ok();
@@ -70,7 +71,9 @@ namespace FD.Videolocadora.Api.Controllers
             
             try
             {
+                if (value == null) { throw new Exception("Json invalido."); }
                 Locacao novo = new Locacao();
+                novo.LocacaoId = id;
                 novo.FilmeId = value.FilmeId;
                 novo.UsuarioId = value.UsuarioId;
                 novo.DataDevolucao = value.DataDevolucao;

@@ -15,7 +15,7 @@ namespace FD.Videolocadora.Domain.Services
         {
             _repository = repository;
         }
-        public TEntity Adicionar(TEntity TEntity)
+        public virtual TEntity Adicionar(TEntity TEntity)
         {
             return _repository.Adicionar(TEntity);
         }
@@ -31,17 +31,17 @@ namespace FD.Videolocadora.Domain.Services
             GC.SuppressFinalize(this);
         }
 
-        public TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(Guid id)
         {
             return _repository.ObterPorId(id);
         }
 
-        public IEnumerable<TEntity> ObterTodos()
+        public virtual IEnumerable<TEntity> ObterTodos()
         {
             return _repository.ObterTodos();
         }
 
-        public void Remover(Guid id)
+        public virtual void Remover(Guid id)
         {
             _repository.Remover(id);
         }

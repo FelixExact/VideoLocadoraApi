@@ -12,9 +12,9 @@ namespace FD.Videolocadora.Api.Controllers
 {
     public class FilmeController : ApiController
     {
-        private readonly IEntityAppService<Filme> _appService;
+        private readonly IFilmeAppService _appService;
 
-        public FilmeController(IEntityAppService<Filme> appService)
+        public FilmeController(IFilmeAppService appService)
         {
             _appService = appService;
         }
@@ -57,6 +57,7 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
+                if (value == null) { throw new Exception("Json invalido."); }
                 Filme f = value.ToEntity();
                 _appService.Adicionar(f);
                 return Ok();
@@ -73,6 +74,7 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
+                if (value == null) { throw new Exception("Json invalido."); }
                 Filme novo = new Filme();
                 novo.FilmeId = id;
                 novo.Nome = value.Nome;

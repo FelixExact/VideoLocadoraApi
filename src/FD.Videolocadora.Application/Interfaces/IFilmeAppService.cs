@@ -10,7 +10,7 @@ namespace FD.Videolocadora.Application.Interfaces
 {
     public interface IFilmeAppService
     {
-        void Adicionar(Filme Filme);
+        Filme Adicionar(Filme Filme);
         Filme ObterPorId(Guid id);
         IEnumerable<Filme> ObterTodos();
         Filme Atualizar(Filme Filme);

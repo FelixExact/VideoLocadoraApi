@@ -12,34 +12,35 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application
 {
-    public class GeneroAppService : EntityAppService<Genero>
+    public class GeneroAppService : EntityAppService<Genero>, IGeneroAppService
     {
-        private readonly IEntityService<Genero> _service;
+        private readonly IGeneroService _service;
 
 
-        public GeneroAppService(IEntityService<Genero> service, IUnitOfWork uow)
-            :base(service ,uow)
+        public GeneroAppService(IGeneroService service, IEntityService<Genero> serviceS, IUnitOfWork uow)
+            :base(serviceS ,uow)
         {
             _service = service;
         }
 
 
 
-        //public void Adicionar(Genero generoModel)
-        //{
-        //    var genero = generoModel;
-        //
-        //    BeginTransaction();
-        //    _service.Adicionar(genero);
-        //    Commit();
-        //}
-        //
-        //public Genero Atualizar(Genero genero)
-        //{
-        //    _service.Atualizar(genero);
-        //    return genero;
-        //}
-        //
+        public override Genero Adicionar(Genero generoModel)
+        {
+            var genero = generoModel;
+        
+            BeginTransaction();
+            var retorno = _service.Adicionar(genero);
+            Commit();
+            return retorno;
+        }
+        
+        public override Genero Atualizar(Genero genero)
+        {
+            _service.Atualizar(genero);
+            return genero;
+        }
+        
         //public Genero ObterPorId(Guid id)
         //{
         //    return _service.ObterPorId(id);

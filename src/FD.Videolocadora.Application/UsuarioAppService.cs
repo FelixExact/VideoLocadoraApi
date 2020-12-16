@@ -12,37 +12,31 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application
 {
-    public class UsuarioAppService : EntityAppService<Usuario>
+    public class UsuarioAppService : EntityAppService<Usuario>, IUsuarioAppService
     {
-        private readonly IEntityService<Usuario> _service;
+        private readonly IUsuarioService _service;
 
 
-        public UsuarioAppService(IEntityService<Usuario> service, IUnitOfWork uow)
-            : base(service, uow)
+        public UsuarioAppService(IUsuarioService service, IEntityService<Usuario> services, IUnitOfWork uow)
+            : base(services, uow)
         {
             _service = service;
         }
-       // public Usuario Adicionar(Usuario usuarioModel)
-       // {
-       //     var usuario = usuarioModel;
-       //    BeginTransaction();
-       //     var usuarioReturn = _service.Adicionar(usuario);
-       //     if (usuarioReturn.ValidationResult.IsValid)
-       //     {
-       //         Commit();
-       //     }
-       //     var retornoUsuario = usuario;
-       //     
-       //     return retornoUsuario;
-       //
-       //
-       // }
-       //
-       // public Usuario Atualizar(Usuario Usuario)
-       // {
-       //     _service.Atualizar(Usuario);
-       //     return Usuario;
-       // }
+        public override Usuario Adicionar(Usuario usuario)
+        {
+            BeginTransaction();
+            var retorno = _service.Adicionar(usuario);
+            Commit();
+            return retorno;
+
+
+        }
+
+        public override Usuario Atualizar(Usuario Usuario)
+        {
+            _service.Atualizar(Usuario);
+            return Usuario;
+        }
        //
        // public void Dispose()
        // {

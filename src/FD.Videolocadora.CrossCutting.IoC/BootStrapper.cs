@@ -22,17 +22,17 @@ namespace FD.Videolocadora.CrossCutting.IoC
         public static void RegisterServices(Container container) {
 
             //API
-            //container.Register<IEntityAppService<>, GeneroAppService>(Lifestyle.Scoped);
+            container.Register<IGeneroAppService, GeneroAppService>(Lifestyle.Scoped);
             //container.RegisterPerWebRequest<IGeneroAppService, GeneroAppService>();
-            //container.Register<IFilmeAppService, FilmeAppService>(Lifestyle.Scoped);
-            //container.Register<IlocacaoAppService, LocacaoAppService>(Lifestyle.Scoped);
-            //container.Register<IUsuarioAppService, UsuarioAppService>(Lifestyle.Scoped);
+            container.Register<IFilmeAppService, FilmeAppService>(Lifestyle.Scoped);
+            container.Register<ILocacaoAppService, LocacaoAppService>(Lifestyle.Scoped);
+            container.Register<IUsuarioAppService, UsuarioAppService>(Lifestyle.Scoped);
 
             container.Register(typeof(IEntityAppService<>), typeof(EntityAppService<>), Lifestyle.Scoped);
 
 
             //Domain
-            //container.Register<IGeneroService, GeneroService>(Lifestyle.Scoped);
+            container.Register<IGeneroService, GeneroService>(Lifestyle.Scoped);
             container.Register<IFilmeService, FilmeService>(Lifestyle.Scoped);
             container.Register<ILocacaoService, LocacaoService>(Lifestyle.Scoped);
             container.Register<IUsuarioService, UsuarioService>(Lifestyle.Scoped);
