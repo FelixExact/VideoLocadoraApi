@@ -11,9 +11,9 @@ namespace FD.Videolocadora.Domain.Services
 {
     public class LocacaoService : EntityService<Locacao>,ILocacaoService
     {
-        private readonly IRepository<Locacao> _repository;
+        private readonly ILocacaoRepository _repository;
 
-        public LocacaoService(IRepository<Locacao> repository): base(repository)
+        public LocacaoService(ILocacaoRepository repository): base(repository)
         {
             _repository = repository;
         }
@@ -27,6 +27,10 @@ namespace FD.Videolocadora.Domain.Services
         {
             return _repository.Atualizar(locacao);
         }
-      
+
+        public void RemoverPorUsuario(Guid id)
+        {
+            _repository.RemoverPorUsuario(id);
+        }
     }
 }

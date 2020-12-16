@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Infra.Data.Repository
 {
-    public class LocacaoRepository : Repository<Locacao>, IRepository<Locacao>
+    public class LocacaoRepository : Repository<Locacao>, ILocacaoRepository
     {
         public LocacaoRepository(VideolocadoraContext context)
         : base(context)
@@ -43,8 +43,14 @@ namespace FD.Videolocadora.Infra.Data.Repository
             var sql = @"DELETE FROM Locacoes  " +
                        "WHERE LocacaoId = @sid";
             cn.Execute(sql, new { sid = id });
+        }
 
-            SaveChanges();
+        public void RemoverPorUsuario(Guid id) {
+            var cn = Db.Database.Connection;
+
+            var sql = @"DELETE FROM Locacoes  " +
+                       "WHERE UsuarioId = @sid";
+            cn.Execute(sql, new { sid = id });
         }
     }
     

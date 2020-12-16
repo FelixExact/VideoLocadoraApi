@@ -35,10 +35,19 @@ namespace FD.Videolocadora.Application
         
         public override Locacao Atualizar(Locacao locacao)
         {
+            BeginTransaction();
             _service.Atualizar(locacao);
+            Commit();
             return locacao;
         }
-        
+
+        public void RemoverPorUsuario(Guid id)
+        {
+            BeginTransaction();
+            _service.RemoverPorUsuario(id);
+            Commit();
+        }
+
         //public void Dispose()
         //{
         //    _service.Dispose();

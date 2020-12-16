@@ -122,6 +122,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\FilmeController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
+    <Compile Include="Controllers\LocacaoClienteController.cs" />
     <Compile Include="Controllers\locacaoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">

@@ -14,5 +14,6 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
         IEnumerable<Locacao> ObterTodos();
         Locacao Atualizar(Locacao locacao);
         void Remover(Guid id);
+        void RemoverPorUsuario(Guid id);
     }
 }

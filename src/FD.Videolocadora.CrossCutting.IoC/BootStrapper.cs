@@ -46,6 +46,8 @@ namespace FD.Videolocadora.CrossCutting.IoC
             container.Register<IRepository<Locacao>, LocacaoRepository>(Lifestyle.Scoped);
             container.Register<IRepository<Usuario>, UsuarioRepository>(Lifestyle.Scoped);
 
+            container.Register<ILocacaoRepository, LocacaoRepository>(Lifestyle.Scoped);
+
 
             //container.Register(typeof(IRepository<>), typeof(Repository<>));
 
