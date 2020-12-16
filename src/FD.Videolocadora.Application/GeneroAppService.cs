@@ -17,8 +17,8 @@ namespace FD.Videolocadora.Application
         private readonly IGeneroService _service;
 
 
-        public GeneroAppService(IGeneroService service, IEntityService<Genero> serviceS, IUnitOfWork uow)
-            :base(serviceS ,uow)
+        public GeneroAppService(IGeneroService service, IUnitOfWork uow)
+            :base(service ,uow)
         {
             _service = service;
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application.Interfaces
 {
-    public interface IFilmeAppService
+    public interface IFilmeAppService: IEntityAppService<Filme>
     {
         Filme Adicionar(Filme Filme);
         Filme ObterPorId(Guid id);

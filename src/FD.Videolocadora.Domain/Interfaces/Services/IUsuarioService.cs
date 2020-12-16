@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Interfaces.Services
 {
-    public interface IUsuarioService : IDisposable
+    public interface IUsuarioService : IEntityService<Usuario>
     {
         Usuario Adicionar(Usuario Usuario);
         Usuario ObterPorId(Guid id);

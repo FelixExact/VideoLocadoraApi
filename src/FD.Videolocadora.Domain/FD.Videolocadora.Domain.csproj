@@ -55,16 +55,15 @@
     <Compile Include="Services\GeneroService.cs" />
     <Compile Include="Services\LocacaoService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
-    <Compile Include="Specifications\Usuarios\UsuarioDeveTerCpfValidoSpecification.cs" />
     <Compile Include="Validations\Documentos\CPFValidation.cs" />
-    <Compile Include="Validations\Usuarios\UsuarioCpfExecption.cs" />
-    <Compile Include="Validations\Usuarios\UsuarioEstaConsistenteValidation.cs" />
-    <Compile Include="Validations\Usuarios\UsuarioValidoException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Specifications\Usuarios\" />
+    <Folder Include="Validations\Usuarios\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

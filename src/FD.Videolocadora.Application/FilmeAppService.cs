@@ -17,8 +17,8 @@ namespace FD.Videolocadora.Application
         private readonly IFilmeService _service;
 
 
-        public FilmeAppService(IFilmeService service, IEntityService<Filme> services, IUnitOfWork uow)
-            : base(services, uow)
+        public FilmeAppService(IFilmeService service, IUnitOfWork uow)
+            : base(service, uow)
         {
             _service = service;
         }

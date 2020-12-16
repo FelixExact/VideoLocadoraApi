@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application.Interfaces
 {
-    public interface IGeneroAppService 
+    public interface IGeneroAppService : IEntityAppService<Genero>
     {
         Genero Adicionar(Genero Genero);
         Genero ObterPorId(Guid id);

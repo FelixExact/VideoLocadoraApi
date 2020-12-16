@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application.Interfaces
 {
-    public interface IUsuarioAppService
+    public interface IUsuarioAppService : IEntityAppService<Usuario>
     {
         Usuario Adicionar(Usuario Usuario);
         Usuario ObterPorId(Guid id);

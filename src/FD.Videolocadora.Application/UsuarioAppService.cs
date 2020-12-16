@@ -17,8 +17,8 @@ namespace FD.Videolocadora.Application
         private readonly IUsuarioService _service;
 
 
-        public UsuarioAppService(IUsuarioService service, IEntityService<Usuario> services, IUnitOfWork uow)
-            : base(services, uow)
+        public UsuarioAppService(IUsuarioService service, IUnitOfWork uow)
+            : base(service, uow)
         {
             _service = service;
         }

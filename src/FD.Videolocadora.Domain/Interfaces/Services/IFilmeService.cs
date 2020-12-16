@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Interfaces.Services
 {
-    public interface IFilmeService : IDisposable
+    public interface IFilmeService : IEntityService<Filme> 
     {
         Filme Adicionar(Filme Filme);
         Filme ObterPorId(Guid id);

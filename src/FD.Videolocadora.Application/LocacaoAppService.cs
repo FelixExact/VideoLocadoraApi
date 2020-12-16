@@ -17,8 +17,8 @@ namespace FD.Videolocadora.Application
         private readonly ILocacaoService _service;
 
 
-        public LocacaoAppService(ILocacaoService service, IEntityService<Locacao> services, IUnitOfWork uow)
-            : base(services, uow)
+        public LocacaoAppService(ILocacaoService service, IUnitOfWork uow)
+            : base(service, uow)
         {
             _service = service;
         }

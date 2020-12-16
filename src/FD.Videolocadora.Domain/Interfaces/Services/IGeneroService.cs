@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Interfaces.Services
 {
-    public interface IGeneroService : IDisposable
+    public interface IGeneroService : IEntityService<Genero>
     {
         Genero Adicionar(Genero Genero);
         Genero ObterPorId(Guid id);
