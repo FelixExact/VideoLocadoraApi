@@ -52,6 +52,7 @@ namespace FD.Videolocadora.Api.Controllers
         public IHttpActionResult Post([FromBody] LocacaoModel value)
         {
             try
+            
             {
                 if (value == null) { throw new Exception("Json invalido."); }
                 Locacao l = value.ToEntity();

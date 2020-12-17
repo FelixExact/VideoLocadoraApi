@@ -20,6 +20,11 @@ namespace FD.Videolocadora.Domain.Services
 
         public override Locacao Adicionar(Locacao locacao)
         {
+            int dispnivel = _repository.FilmeDisponivel(locacao.FilmeId);
+            if (dispnivel == 0) {
+                throw new Exception("filme indisponivel.");
+            }
+            _repository.UpdateLocacao(locacao.FilmeId, (dispnivel-1));
            return _repository.Adicionar(locacao);
         }
 

@@ -52,6 +52,28 @@ namespace FD.Videolocadora.Infra.Data.Repository
                        "WHERE UsuarioId = @sid";
             cn.Execute(sql, new { sid = id });
         }
+
+
+        public int FilmeDisponivel(Guid id)
+        {
+            var cn = Db.Database.Connection;
+
+            var sql = @"SELECT * FROM Filmes c " +
+                       "WHERE c.FilmeId = @sid";
+            var a = cn.Query<Filme>(sql, new { sid = id }).FirstOrDefault();
+            
+            return a.Disponivel;
+
+        }
+        public void UpdateLocacao(Guid id, int quantidade)
+        {
+            var cn = Db.Database.Connection;
+
+            var sql = @"UPDATE Filmes  " +
+                       "SET Disponivel = @squantidade " +
+                        "WHERE FilmeId = @sid";
+            cn.Execute(sql, new { sid = id, squantidade = quantidade });
+        }
     }
     
     
