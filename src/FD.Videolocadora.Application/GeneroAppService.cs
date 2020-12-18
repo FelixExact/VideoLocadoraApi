@@ -29,9 +29,7 @@ namespace FD.Videolocadora.Application
         {
             var genero = generoModel;
         
-            BeginTransaction();
             var retorno = _service.Adicionar(genero);
-            Commit();
             return retorno;
         }
         

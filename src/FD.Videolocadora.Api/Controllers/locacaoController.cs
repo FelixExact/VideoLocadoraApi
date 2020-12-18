@@ -18,6 +18,7 @@ namespace FD.Videolocadora.Api.Controllers
         {
             _appService = appService;
         }
+
         // GET: api/locacao
         public IHttpActionResult Get()
         {

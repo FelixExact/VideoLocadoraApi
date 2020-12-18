@@ -9,11 +9,5 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
 {
     public interface IFilmeService : IEntityService<Filme> 
     {
-        Filme Adicionar(Filme Filme);
-        Filme ObterPorId(Guid id);
-        IEnumerable<Filme> ObterTodos();
-        Filme Atualizar(Filme Filme);
-
-        void Remover(Guid id);
     }
 }

@@ -26,10 +26,7 @@ namespace FD.Videolocadora.Application
         public override Locacao Adicionar(Locacao locacaoModel)
         {
             var locacao = locacaoModel;
-          
-            BeginTransaction();
             var retorno =  _service.Adicionar(locacao);
-            Commit();
             return retorno;
         }
         

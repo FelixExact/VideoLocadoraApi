@@ -9,12 +9,6 @@ namespace FD.Videolocadora.Application.Interfaces
 {
     public interface ILocacaoAppService : IEntityAppService<Locacao>
     {
-        Locacao Adicionar(Locacao locacao);
-        Locacao ObterPorId(Guid id);
-        IEnumerable<Locacao> ObterTodos();
-        Locacao Atualizar(Locacao locacao);
-        void Remover(Guid id);
-
         void RemoverPorUsuario(Guid id);
     }
 }

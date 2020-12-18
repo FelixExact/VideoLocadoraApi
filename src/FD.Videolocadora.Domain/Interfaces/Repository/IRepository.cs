@@ -15,6 +15,8 @@ namespace FD.Videolocadora.Domain.Interfaces.Repository
         TEntity Atualizar(TEntity obj);
         void Remover(Guid id);
         IEnumerable<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate);
-        int SaveChanges();
+        void SaveChanges();
+        void BeginTransaction();
+        void Rollback();
     }
 }

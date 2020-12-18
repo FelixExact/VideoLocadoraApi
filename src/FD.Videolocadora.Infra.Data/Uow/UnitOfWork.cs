@@ -20,11 +20,18 @@ namespace FD.Videolocadora.Infra.Data.Uow
         public void BeginTransaction()
         {
             _disposed = false;
+            _context.Database.BeginTransaction();
         }
 
         public void Commit()
         {
             _context.SaveChanges();
+            
+        }
+
+        public void Rollback()
+        {
+            _context.Database.CurrentTransaction.Rollback();
         }
         protected virtual void Dispose(bool disposing)
         {

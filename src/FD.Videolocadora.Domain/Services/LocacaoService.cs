@@ -20,12 +20,17 @@ namespace FD.Videolocadora.Domain.Services
 
         public override Locacao Adicionar(Locacao locacao)
         {
-            int dispnivel = _repository.FilmeDisponivel(locacao.FilmeId);
-            if (dispnivel == 0) {
-                throw new Exception("filme indisponivel.");
-            }
-            _repository.UpdateLocacao(locacao.FilmeId, (dispnivel-1));
-           return _repository.Adicionar(locacao);
+                int dispnivel = _repository.FilmeDisponivel(locacao.FilmeId);
+                if (dispnivel == 0)
+                {
+                    throw new Exception("filme indisponivel.");
+                }
+
+                //_repository.UpdateLocacao(locacao.FilmeId, (dispnivel - 1));
+                var a = _repository.Adicionar(locacao, locacao.FilmeId, (dispnivel - 1));
+
+                _repository.SaveChanges();
+                return a;
         }
 
         public override Locacao Atualizar(Locacao locacao)
@@ -39,3 +44,7 @@ namespace FD.Videolocadora.Domain.Services
         }
     }
 }
+
+
+
+

@@ -10,12 +10,5 @@ namespace FD.Videolocadora.Application.Interfaces
 {
     public interface IGeneroAppService : IEntityAppService<Genero>
     {
-        Genero Adicionar(Genero Genero);
-        Genero ObterPorId(Guid id);
-        IEnumerable<Genero> ObterTodos();
-        Genero Atualizar(Genero Genero);
-
-        void Remover(Guid id);
-        void Dispose();
     }
 }

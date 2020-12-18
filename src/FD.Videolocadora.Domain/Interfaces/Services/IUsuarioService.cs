@@ -9,11 +9,5 @@ namespace FD.Videolocadora.Domain.Interfaces.Services
 {
     public interface IUsuarioService : IEntityService<Usuario>
     {
-        Usuario Adicionar(Usuario Usuario);
-        Usuario ObterPorId(Guid id);
-        IEnumerable<Usuario> ObterTodos();
-        Usuario Atualizar(Usuario Usuario);
-
-        void Remover(Guid id);
     }
 }
