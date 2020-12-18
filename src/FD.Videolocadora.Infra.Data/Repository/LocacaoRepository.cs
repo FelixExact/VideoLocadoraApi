@@ -21,7 +21,6 @@ namespace FD.Videolocadora.Infra.Data.Repository
         }
 
 
-
         public virtual Locacao Adicionar(Locacao obj, Guid id, int quantidade)
         {
             using (var ContextTransaction = Db.Database.BeginTransaction())
