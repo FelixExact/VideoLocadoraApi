@@ -148,20 +148,16 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FD.Videolocadora.Application\FD.Videolocadora.Application.csproj">
-      <Project>{28831691-eddc-43d6-ba2c-ca3ba220dd65}</Project>
+      <Project>{bb07230f-2b45-4d8c-b947-f48c1e0e5b99}</Project>
       <Name>FD.Videolocadora.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\FD.Videolocadora.CrossCutting.IoC\FD.Videolocadora.CrossCutting.IoC.csproj">
-      <Project>{e54f4284-ddfe-43e8-afff-87f497bc76bb}</Project>
+      <Project>{585e50e8-77a1-49f0-995a-b5cbb7526ce2}</Project>
       <Name>FD.Videolocadora.CrossCutting.IoC</Name>
     </ProjectReference>
     <ProjectReference Include="..\FD.Videolocadora.Domain\FD.Videolocadora.Domain.csproj">
-      <Project>{41884953-d775-4e4c-8958-5193a42a5e17}</Project>
+      <Project>{cc6d8701-71c5-4a8a-b72b-5d2543ce24d7}</Project>
       <Name>FD.Videolocadora.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FD.Videolocadora.Infra.Data\FD.Videolocadora.Infra.Data.csproj">
-      <Project>{6e2e663d-036a-4000-820f-82bbc8485c4a}</Project>
-      <Name>FD.Videolocadora.Infra.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
