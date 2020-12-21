@@ -21,9 +21,7 @@ namespace FD.Videolocadora.Application
 
         public virtual TEntity Adicionar(TEntity TEntity)
         {
-            BeginTransaction();
             var retorno = _service.Adicionar(TEntity);
-            Commit();
             return retorno;
         }
 

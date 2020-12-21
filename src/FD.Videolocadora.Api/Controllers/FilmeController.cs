@@ -70,7 +70,7 @@ namespace FD.Videolocadora.Api.Controllers
         }
 
         // PUT: api/Filme/5
-        public IHttpActionResult Put(Guid id, [FromBody]FilmeModel value)
+        public IHttpActionResult Put(Guid id, [FromBody]Filme value)
         {
             try
             {

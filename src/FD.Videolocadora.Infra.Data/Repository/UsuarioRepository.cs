@@ -44,7 +44,8 @@ namespace FD.Videolocadora.Infra.Data.Repository
             var sql = @"DELETE FROM Usuarios  " +
                        "WHERE UsuarioId = @sid";
             cn.Execute(sql, new { sid = id });
-            
+            SaveChanges();
+
         }
     }
 }

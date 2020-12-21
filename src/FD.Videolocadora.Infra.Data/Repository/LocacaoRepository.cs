@@ -38,8 +38,8 @@ namespace FD.Videolocadora.Infra.Data.Repository
                     var entry = Db.Entry(filme);
                     DbSetFilme.Attach(filme);
                     entry.State = EntityState.Modified;
-                    Db.SaveChanges();
                     ContextTransaction.Commit();
+                    Db.SaveChanges();
 
                     return objReturn;
                 }
@@ -80,6 +80,7 @@ namespace FD.Videolocadora.Infra.Data.Repository
             var sql = @"DELETE FROM Locacoes  " +
                        "WHERE LocacaoId = @sid";
             cn.Execute(sql, new { sid = id });
+            Db.SaveChanges();
         }
 
         public void RemoverPorUsuario(Guid id) {
@@ -88,6 +89,7 @@ namespace FD.Videolocadora.Infra.Data.Repository
             var sql = @"DELETE FROM Locacoes  " +
                        "WHERE UsuarioId = @sid";
             cn.Execute(sql, new { sid = id });
+            Db.SaveChanges();
         }
 
 
@@ -110,6 +112,7 @@ namespace FD.Videolocadora.Infra.Data.Repository
                        "SET Disponivel = @squantidade " +
                         "WHERE FilmeId = @sid";
             cn.Execute(sql, new { sid = id, squantidade = quantidade });
+            Db.SaveChanges();
         }
     }
     

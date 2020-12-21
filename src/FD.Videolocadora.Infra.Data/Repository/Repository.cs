@@ -24,25 +24,9 @@ namespace FD.Videolocadora.Infra.Data.Repository
 
         public virtual TEntity Adicionar(TEntity obj)
         {
-            using (var ContextTransaction = Db.Database.BeginTransaction())
-            {
-                try
-                {
-                    var objReturn = DbSet.Add(obj);
-                    Db.SaveChanges();
-                    ContextTransaction.Commit();
-
-                    return objReturn;
-                }
-                catch (Exception)
-                {
-
-                    ContextTransaction.Rollback();
-                    throw;
-                }
-            }
-            
-                
+            var objReturn = DbSet.Add(obj);
+            Db.SaveChanges();
+            return objReturn;
         }
 
         public virtual TEntity Atualizar(TEntity obj)
@@ -50,7 +34,7 @@ namespace FD.Videolocadora.Infra.Data.Repository
             var entry = Db.Entry(obj);
             DbSet.Attach(obj);
             entry.State = EntityState.Modified;
-            Db.SaveChanges();
+            SaveChanges();
 
             return obj;
         }
@@ -75,6 +59,7 @@ namespace FD.Videolocadora.Infra.Data.Repository
         {
             TEntity Remo = ObterPorId(id);
             DbSet.Remove(Remo);
+            Db.SaveChanges();
         }
 
         public void SaveChanges()

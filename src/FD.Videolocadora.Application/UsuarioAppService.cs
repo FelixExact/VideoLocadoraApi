@@ -17,9 +17,7 @@ namespace FD.Videolocadora.Application
         }
         public override Usuario Adicionar(Usuario usuario)
         {
-            BeginTransaction();
             var retorno = _service.Adicionar(usuario);
-            Commit();
             return retorno;
 
 

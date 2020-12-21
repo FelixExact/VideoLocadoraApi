@@ -29,7 +29,6 @@ namespace FD.Videolocadora.Domain.Services
                 //_repository.UpdateLocacao(locacao.FilmeId, (dispnivel - 1));
                 var a = _repository.Adicionar(locacao, locacao.FilmeId, (dispnivel - 1));
 
-                _repository.SaveChanges();
                 return a;
         }
 

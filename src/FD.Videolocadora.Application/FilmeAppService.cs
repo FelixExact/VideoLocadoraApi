@@ -18,10 +18,7 @@ namespace FD.Videolocadora.Application
 
         public override Filme Adicionar(Filme filmeModel)
         {
-
-            BeginTransaction();
             var filme = _service.Adicionar(filmeModel);
-            Commit();
             return filme;
         }
         
