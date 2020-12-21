@@ -77,10 +77,10 @@ namespace FD.Videolocadora.Infra.Data.Repository
             Db.Database.BeginTransaction();
         }
 
-        //public void Commit()
-        //{
-        //    Db.SaveChanges();
-        //}
+        public void Commit()
+        {
+            Db.Database.CurrentTransaction.Commit();
+        }
 
         public void Rollback()
         {

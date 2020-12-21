@@ -18,5 +18,6 @@ namespace FD.Videolocadora.Domain.Interfaces.Repository
         void SaveChanges();
         void BeginTransaction();
         void Rollback();
+        void Commit();
     }
 }

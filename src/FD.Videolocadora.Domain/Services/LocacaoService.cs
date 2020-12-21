@@ -25,11 +25,25 @@ namespace FD.Videolocadora.Domain.Services
                 {
                     throw new Exception("filme indisponivel.");
                 }
-
-                //_repository.UpdateLocacao(locacao.FilmeId, (dispnivel - 1));
-                var a = _repository.Adicionar(locacao, locacao.FilmeId, (dispnivel - 1));
+            try
+            {
+                _repository.BeginTransaction();
+                _repository.UpdateLocacao(locacao.FilmeId, (dispnivel - 1));
+                var a = _repository.Adicionar(locacao);
+                _repository.SaveChanges();
+                _repository.Commit();
 
                 return a;
+            }
+            catch (Exception)
+            {
+                _repository.Rollback();
+                throw;
+            }
+
+                
+
+
         }
 
         public override Locacao Atualizar(Locacao locacao)

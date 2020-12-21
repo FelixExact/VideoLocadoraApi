@@ -21,38 +21,13 @@ namespace FD.Videolocadora.Infra.Data.Repository
         }
 
 
-        public virtual Locacao Adicionar(Locacao obj, Guid id, int quantidade)
+        public override Locacao Adicionar(Locacao obj)
         {
-            using (var ContextTransaction = Db.Database.BeginTransaction())
-            {
-                try
-                {
-                    var objReturn = DbSet.Add(obj);
-                    
+            var objReturn = DbSet.Add(obj);
+            return objReturn;
+             
+         }
 
-                    var cn = Db.Database.Connection;
-
-                    Filme filme = (Filme)DbSetFilme.Find(id);
-                    filme.Disponivel = (filme.Disponivel - 1);
-
-                    var entry = Db.Entry(filme);
-                    DbSetFilme.Attach(filme);
-                    entry.State = EntityState.Modified;
-                    ContextTransaction.Commit();
-                    Db.SaveChanges();
-
-                    return objReturn;
-                }
-                catch (Exception)
-                {
-
-                    ContextTransaction.Rollback();
-                    throw;
-                }
-            }
-
-
-        }
 
         public override IEnumerable<Locacao> ObterTodos()
         {
@@ -106,13 +81,12 @@ namespace FD.Videolocadora.Infra.Data.Repository
         }
         public void UpdateLocacao(Guid id, int quantidade)
         {
-            var cn = Db.Database.Connection;
+            Filme filme = (Filme)DbSetFilme.Find(id);
+            filme.Disponivel = (filme.Disponivel - 1);
 
-            var sql = @"UPDATE Filmes  " +
-                       "SET Disponivel = @squantidade " +
-                        "WHERE FilmeId = @sid";
-            cn.Execute(sql, new { sid = id, squantidade = quantidade });
-            Db.SaveChanges();
+            var entry = Db.Entry(filme);
+            DbSetFilme.Attach(filme);
+            entry.State = EntityState.Modified;
         }
     }
     
