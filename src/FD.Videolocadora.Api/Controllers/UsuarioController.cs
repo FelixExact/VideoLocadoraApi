@@ -1,12 +1,7 @@
-﻿using FD.Videolocadora.Application;
-using FD.Videolocadora.Application.Interfaces;
+﻿using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
 using FD.Videolocadora.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace FD.Videolocadora.Api.Controllers
@@ -21,12 +16,12 @@ namespace FD.Videolocadora.Api.Controllers
         // GET: api/Usuario
         public IHttpActionResult Get()
         {
-            try 
+            try
             {
                 return Ok(_appService.ObterTodos());
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -40,34 +35,34 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok(_appService.ObterPorId(id));
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
 
         }
 
-         //POST: api/Usuario
+        //POST: api/Usuario
         public IHttpActionResult Post([FromBody] UsuarioModel value)
         {
             try
             {
                 if (value == null) { throw new Exception("Json invalido."); }
                 Usuario u = value.ToEntity();
-                Usuario model =_appService.Adicionar(u);
+                Usuario model = _appService.Adicionar(u);
                 return Ok("Sucesso!!");
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
         }
-        
+
         // PUT: api/Usuario/5
         public IHttpActionResult Put(Guid id, [FromBody] UsuarioModel value)
         {
-            
+
             try
             {
                 if (value == null) { throw new Exception("Json invalido."); }
@@ -81,14 +76,14 @@ namespace FD.Videolocadora.Api.Controllers
                 _appService.Atualizar(novo);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
-        
-         //DELETE: api/Usuario/5
+
+        //DELETE: api/Usuario/5
         public IHttpActionResult Delete(Guid id)
         {
             try
@@ -97,11 +92,11 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok();
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
     }
 }

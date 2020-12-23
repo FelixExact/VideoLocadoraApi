@@ -1,11 +1,6 @@
 ﻿using FD.Videolocadora.Domain.Entities;
 using FD.Videolocadora.Domain.Interfaces.Repository;
 using FD.Videolocadora.Domain.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Services
 {
@@ -13,7 +8,7 @@ namespace FD.Videolocadora.Domain.Services
     {
         private readonly IRepository<Genero> _Repository;
 
-        public GeneroService(IRepository<Genero> Repository):base(Repository)
+        public GeneroService(IRepository<Genero> Repository) : base(Repository)
         {
             _Repository = Repository;
         }

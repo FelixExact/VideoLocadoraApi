@@ -3,13 +3,10 @@ using FD.Videolocadora.Domain.Interfaces.Services;
 using FD.Videolocadora.Infra.Data.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application
 {
-    public class EntityAppService<TEntity> : AppService,IEntityAppService<TEntity> where TEntity : class
+    public class EntityAppService<TEntity> : AppService, IEntityAppService<TEntity> where TEntity : class
     {
         private readonly IEntityService<TEntity> _service;
 

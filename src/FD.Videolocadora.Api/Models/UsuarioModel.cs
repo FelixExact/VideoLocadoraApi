@@ -1,9 +1,5 @@
 ﻿using FD.Videolocadora.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Application.Models
 {
@@ -33,7 +29,7 @@ namespace FD.Videolocadora.Application.Models
                 DataNascimento = DataNascimento,
                 Ativo = 1
             };
-            
+
         }
     }
 }

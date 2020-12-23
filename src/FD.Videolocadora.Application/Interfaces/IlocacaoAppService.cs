@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using FD.Videolocadora.Domain.Entities;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FD.Videolocadora.Domain.Entities;
+using System;
 
 namespace FD.Videolocadora.Application.Interfaces
 {

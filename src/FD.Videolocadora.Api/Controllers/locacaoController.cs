@@ -1,12 +1,7 @@
-﻿using FD.Videolocadora.Application;
-using FD.Videolocadora.Application.Interfaces;
+﻿using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
 using FD.Videolocadora.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace FD.Videolocadora.Api.Controllers
@@ -27,7 +22,7 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok(_appService.ObterTodos());
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -42,35 +37,35 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok(_appService.ObterPorId(id));
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
 
         // POST: api/locacao
         public IHttpActionResult Post([FromBody] LocacaoModel value)
         {
             try
-            
+
             {
                 if (value == null) { throw new Exception("Json invalido."); }
                 Locacao l = value.ToEntity();
                 _appService.Adicionar(l);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
 
         // PUT: api/locacao/5
         public IHttpActionResult Put(Guid id, [FromBody] Locacao value)
         {
-            
+
             try
             {
                 if (value == null) { throw new Exception("Json invalido."); }
@@ -82,7 +77,7 @@ namespace FD.Videolocadora.Api.Controllers
                 _appService.Atualizar(novo);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -98,11 +93,11 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok();
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
 
     }

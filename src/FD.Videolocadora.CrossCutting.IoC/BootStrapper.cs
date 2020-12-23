@@ -9,17 +9,13 @@ using FD.Videolocadora.Infra.Data.Interface;
 using FD.Videolocadora.Infra.Data.Repository;
 using FD.Videolocadora.Infra.Data.Uow;
 using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.CrossCutting.IoC
 {
     public class BootStrapper
     {
-        public static void RegisterServices(Container container) {
+        public static void RegisterServices(Container container)
+        {
 
             //API
             container.Register<IGeneroAppService, GeneroAppService>(Lifestyle.Scoped);
@@ -27,6 +23,7 @@ namespace FD.Videolocadora.CrossCutting.IoC
             container.Register<IFilmeAppService, FilmeAppService>(Lifestyle.Scoped);
             container.Register<ILocacaoAppService, LocacaoAppService>(Lifestyle.Scoped);
             container.Register<IUsuarioAppService, UsuarioAppService>(Lifestyle.Scoped);
+
 
             container.Register(typeof(IEntityAppService<>), typeof(EntityAppService<>), Lifestyle.Scoped);
 

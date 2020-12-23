@@ -2,10 +2,6 @@
 using FD.Videolocadora.Application.Models;
 using FD.Videolocadora.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace FD.Videolocadora.Api.Controllers
@@ -28,12 +24,12 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok(_appService.ObterTodos());
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
 
-            
+
         }
 
         // GET: api/Filme/5
@@ -45,11 +41,11 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok(_appService.ObterPorId(id));
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
 
         // POST: api/Filme
@@ -62,15 +58,15 @@ namespace FD.Videolocadora.Api.Controllers
                 _appService.Adicionar(f);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
 
         // PUT: api/Filme/5
-        public IHttpActionResult Put(Guid id, [FromBody]Filme value)
+        public IHttpActionResult Put(Guid id, [FromBody] Filme value)
         {
             try
             {
@@ -81,10 +77,10 @@ namespace FD.Videolocadora.Api.Controllers
                 novo.GeneroId = value.GeneroId;
                 novo.Valor = value.Valor;
                 novo.Disponivel = 1;
-                
+
                 return Ok(_appService.Atualizar(novo));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -98,11 +94,11 @@ namespace FD.Videolocadora.Api.Controllers
                 _appService.Remover(id);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
     }
 }

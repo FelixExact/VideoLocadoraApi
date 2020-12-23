@@ -11,7 +11,7 @@ namespace FD.Videolocadora.Application
 
 
         public GeneroAppService(IGeneroService service, IUnitOfWork uow)
-            :base(service ,uow)
+            : base(service, uow)
         {
             _service = service;
         }
@@ -21,17 +21,17 @@ namespace FD.Videolocadora.Application
         public override Genero Adicionar(Genero generoModel)
         {
             var genero = generoModel;
-        
+
             var retorno = _service.Adicionar(genero);
             return retorno;
         }
-        
+
         public override Genero Atualizar(Genero genero)
         {
             _service.Atualizar(genero);
             return genero;
         }
-        
+
         //public Genero ObterPorId(Guid id)
         //{
         //    return _service.ObterPorId(id);

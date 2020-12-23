@@ -1,12 +1,8 @@
-﻿
+﻿using FD.Videolocadora.Api.Cache;
 using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
 using FD.Videolocadora.Domain.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace FD.Videolocadora.Api.Controllers
@@ -14,19 +10,25 @@ namespace FD.Videolocadora.Api.Controllers
     public class GeneroController : ApiController
     {
         private readonly IGeneroAppService _generoAppService;
+        private readonly ICache _cache ;
 
-        public GeneroController(IGeneroAppService generoAppService)
+
+        public GeneroController(IGeneroAppService generoAppService, ICache cache)
         {
             _generoAppService = generoAppService;
+            _cache = cache;
         }
         // GET: api/Genero
         public IHttpActionResult Get()
         {
             try
             {
-                return Ok(_generoAppService.ObterTodos());
+                _cache.SetCache("teste1", _generoAppService.ObterTodos());
+                var a = _cache.GetCache("teste1");
+                return Ok(a);
+                //_generoAppService.ObterTodos()
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -37,9 +39,10 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
+
                 return Ok(_generoAppService.ObterPorId(id));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -50,13 +53,13 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
-                if(value == null) { throw new Exception("Json invalido."); }
+                if (value == null) { throw new Exception("Json invalido."); }
 
                 Genero g = value.ToEntity();
                 _generoAppService.Adicionar(g);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -66,7 +69,7 @@ namespace FD.Videolocadora.Api.Controllers
         // PUT: api/Genero/5
         public IHttpActionResult Put(Guid id, [FromBody] GeneroModel value)
         {
-            
+
 
             try
             {
@@ -77,7 +80,7 @@ namespace FD.Videolocadora.Api.Controllers
                 _generoAppService.Atualizar(novoGenero);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -91,7 +94,7 @@ namespace FD.Videolocadora.Api.Controllers
                 _generoAppService.Remover(id);
                 return Ok();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }

@@ -5,8 +5,6 @@ using FD.Videolocadora.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Infra.Data.Repository
 {
@@ -30,11 +28,11 @@ namespace FD.Videolocadora.Infra.Data.Repository
         public override Genero ObterPorId(Guid id)
         {
             var cn = Db.Database.Connection;
-        
+
             var sql = @"SELECT * FROM Generos c " +
                        "WHERE c.GeneroId = @sid";
             return cn.Query<Genero>(sql, new { sid = id }).FirstOrDefault();
-                
+
         }
         public override void Remover(Guid id)
         {

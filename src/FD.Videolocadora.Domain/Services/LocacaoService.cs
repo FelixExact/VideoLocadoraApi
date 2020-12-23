@@ -2,29 +2,25 @@
 using FD.Videolocadora.Domain.Interfaces.Repository;
 using FD.Videolocadora.Domain.Interfaces.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Services
 {
-    public class LocacaoService : EntityService<Locacao>,ILocacaoService
+    public class LocacaoService : EntityService<Locacao>, ILocacaoService
     {
         private readonly ILocacaoRepository _repository;
 
-        public LocacaoService(ILocacaoRepository repository): base(repository)
+        public LocacaoService(ILocacaoRepository repository) : base(repository)
         {
             _repository = repository;
         }
 
         public override Locacao Adicionar(Locacao locacao)
         {
-                int dispnivel = _repository.FilmeDisponivel(locacao.FilmeId);
-                if (dispnivel == 0)
-                {
-                    throw new Exception("filme indisponivel.");
-                }
+            int dispnivel = _repository.FilmeDisponivel(locacao.FilmeId);
+            if (dispnivel == 0)
+            {
+                throw new Exception("filme indisponivel.");
+            }
             try
             {
                 _repository.BeginTransaction();
@@ -41,7 +37,7 @@ namespace FD.Videolocadora.Domain.Services
                 throw;
             }
 
-                
+
 
 
         }

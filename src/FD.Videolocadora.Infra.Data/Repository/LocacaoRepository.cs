@@ -6,8 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Infra.Data.Repository
 {
@@ -25,8 +23,8 @@ namespace FD.Videolocadora.Infra.Data.Repository
         {
             var objReturn = DbSet.Add(obj);
             return objReturn;
-             
-         }
+
+        }
 
 
         public override IEnumerable<Locacao> ObterTodos()
@@ -58,7 +56,8 @@ namespace FD.Videolocadora.Infra.Data.Repository
             Db.SaveChanges();
         }
 
-        public void RemoverPorUsuario(Guid id) {
+        public void RemoverPorUsuario(Guid id)
+        {
             var cn = Db.Database.Connection;
 
             var sql = @"DELETE FROM Locacoes  " +
@@ -75,7 +74,7 @@ namespace FD.Videolocadora.Infra.Data.Repository
             var sql = @"SELECT * FROM Filmes c " +
                        "WHERE c.FilmeId = @sid";
             var a = cn.Query<Filme>(sql, new { sid = id }).FirstOrDefault();
-            
+
             return a.Disponivel;
 
         }
@@ -89,6 +88,6 @@ namespace FD.Videolocadora.Infra.Data.Repository
             entry.State = EntityState.Modified;
         }
     }
-    
-    
+
+
 }

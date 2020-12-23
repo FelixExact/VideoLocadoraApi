@@ -28,27 +28,27 @@ namespace FD.Videolocadora.Application
             _service.Atualizar(Usuario);
             return Usuario;
         }
-       //
-       // public void Dispose()
-       // {
-       //     _service.Dispose();
-       //     GC.SuppressFinalize(this);
-       // }
-       //
-       // public Usuario ObterPorId(Guid id)
-       // {
-       //     return _service.ObterPorId(id);
-       // }
-       //
-       // public IEnumerable<Usuario> ObterTodos()
-       // {
-       //     return _service.ObterTodos();
-       // }
-       //
-       // public void Remover(Guid id)
-       // {
-       //     _service.Remover(id);
-       // }
+        //
+        // public void Dispose()
+        // {
+        //     _service.Dispose();
+        //     GC.SuppressFinalize(this);
+        // }
+        //
+        // public Usuario ObterPorId(Guid id)
+        // {
+        //     return _service.ObterPorId(id);
+        // }
+        //
+        // public IEnumerable<Usuario> ObterTodos()
+        // {
+        //     return _service.ObterTodos();
+        // }
+        //
+        // public void Remover(Guid id)
+        // {
+        //     _service.Remover(id);
+        // }
 
     }
 }

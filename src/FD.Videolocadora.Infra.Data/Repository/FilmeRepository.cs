@@ -5,15 +5,14 @@ using FD.Videolocadora.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Infra.Data.Repository
 {
     public class FilmeRepository : Repository<Filme>, IRepository<Filme>
     {
         public FilmeRepository(VideolocadoraContext context)
-        :base(context){
+        : base(context)
+        {
 
         }
 
@@ -36,6 +35,6 @@ namespace FD.Videolocadora.Infra.Data.Repository
             return cn.Query<Filme>(sql, new { sid = id }).FirstOrDefault();
 
         }
-        
+
     }
 }

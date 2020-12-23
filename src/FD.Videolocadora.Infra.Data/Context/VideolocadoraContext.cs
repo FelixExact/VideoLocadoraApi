@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FD.Videolocadora.Domain.Entities;
+using FD.Videolocadora.Infra.Data.EntityConfig;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FD.Videolocadora.Domain.Entities;
-using FD.Videolocadora.Infra.Data.EntityConfig;
 
 namespace FD.Videolocadora.Infra.Data.Context
 {
@@ -27,7 +22,7 @@ namespace FD.Videolocadora.Infra.Data.Context
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-            
+
             //configuração geral
             modelBuilder.Properties()
                 .Where(p => p.Name == p.ReflectedType.Name + "Id")
@@ -38,7 +33,7 @@ namespace FD.Videolocadora.Infra.Data.Context
 
             modelBuilder.Properties<string>()
                 .Configure(p => p.HasMaxLength(100));
-            
+
             // cadastrando as cofigs das tabelas
             modelBuilder.Configurations.Add(new FilmeConfig());
             modelBuilder.Configurations.Add(new GeneroConfig());
@@ -48,7 +43,7 @@ namespace FD.Videolocadora.Infra.Data.Context
             base.OnModelCreating(modelBuilder);
         }
 
-        
+
 
 
     }

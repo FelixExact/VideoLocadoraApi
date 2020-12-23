@@ -19,7 +19,7 @@ namespace FD.Videolocadora.Domain.Entities
 
         public void Valido()
         {
-           if (!(CPFValidation.Validar(CPF)))
+            if (!(CPFValidation.Validar(CPF)))
             {
                 throw new Exception("CPF Invalido");
             }

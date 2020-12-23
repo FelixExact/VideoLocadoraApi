@@ -1,9 +1,5 @@
 ﻿using FD.Videolocadora.Application.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace FD.Videolocadora.Api.Controllers
@@ -28,7 +24,7 @@ namespace FD.Videolocadora.Api.Controllers
                 return Ok();
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }

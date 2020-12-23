@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,7 @@
     <Compile Include="Entities\Genero.cs" />
     <Compile Include="Entities\Locacao.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Helper\StackExchangeRedisExtension.cs" />
     <Compile Include="Interfaces\Repository\ILocacaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepository.cs" />
     <Compile Include="Interfaces\Services\IEntityService.cs" />
@@ -59,6 +63,9 @@
     <Compile Include="Services\LocacaoService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
     <Compile Include="Validations\Documentos\CPFValidation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

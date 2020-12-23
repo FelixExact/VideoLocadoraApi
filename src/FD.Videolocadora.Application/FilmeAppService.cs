@@ -5,7 +5,7 @@ using FD.Videolocadora.Infra.Data.Interface;
 
 namespace FD.Videolocadora.Application
 {
-    public class FilmeAppService : EntityAppService<Filme> ,IFilmeAppService
+    public class FilmeAppService : EntityAppService<Filme>, IFilmeAppService
     {
         private readonly IFilmeService _service;
 
@@ -21,13 +21,13 @@ namespace FD.Videolocadora.Application
             var filme = _service.Adicionar(filmeModel);
             return filme;
         }
-        
+
         public override Filme Atualizar(Filme filme)
         {
             _service.Atualizar(filme);
             return filme;
         }
-        
+
         //public void Dispose()
         //{
         //    _service.Dispose();

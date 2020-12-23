@@ -1,11 +1,6 @@
 ﻿using FD.Videolocadora.Domain.Entities;
 using FD.Videolocadora.Domain.Interfaces.Repository;
 using FD.Videolocadora.Domain.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Services
 {
@@ -13,7 +8,7 @@ namespace FD.Videolocadora.Domain.Services
     {
         private readonly IRepository<Usuario> _repository;
 
-        public UsuarioService(IRepository<Usuario> repository) : base (repository)
+        public UsuarioService(IRepository<Usuario> repository) : base(repository)
         {
             _repository = repository;
         }
@@ -30,6 +25,6 @@ namespace FD.Videolocadora.Domain.Services
             return _repository.Atualizar(Usuario);
         }
 
-        
+
     }
 }
