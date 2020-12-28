@@ -3,6 +3,7 @@
 namespace FD.Videolocadora.Api.App_Start
 {
     using FD.Videolocadora.Api.Cache;
+    using FD.Videolocadora.Application.Interfaces;
     using FD.Videolocadora.CrossCutting.IoC;
     using SimpleInjector;
     using SimpleInjector.Integration.WebApi;
@@ -26,6 +27,7 @@ namespace FD.Videolocadora.Api.App_Start
 
             GlobalConfiguration.Configuration.DependencyResolver =
                 new SimpleInjectorWebApiDependencyResolver(container);
+            
         }
 
         private static void InitializeContainer(Container container)
