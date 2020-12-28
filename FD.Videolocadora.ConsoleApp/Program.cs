@@ -18,40 +18,46 @@ namespace FD.Videolocadora.ConsoleApp
         private const string _CONNECTION_STRING = "Endpoint=sb://spottermessagebusdev.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=qhv+vddxzeoK0KFj7xMWovjvXKUEIzyjcRHYfQbNSus=";
         private const string _NAME_QUEUE = "treinamento_felix";
         static QueueClient _Queue;
-        static Container _Container; 
+        static Container _Container;
         static void Main(string[] args)
         {
             Initialize();
-            var genero = _Container.GetInstance<IGeneroAppService>();
-            _Queue = new QueueClient(_CONNECTION_STRING, _NAME_QUEUE);
+            using (AsyncScopedLifestyle.BeginScope(_Container))
+            {
 
-            _Queue.RegisterMessageHandler((Microsoft.Azure.ServiceBus.Message M, CancellationToken C) =>
-            {
-                string Body = Encoding.UTF8.GetString(M.Body);
-                Console.WriteLine(Body);
 
-                return Task.CompletedTask;
+                var genero = _Container.GetInstance<IGeneroAppService>();
+                _Queue = new QueueClient(_CONNECTION_STRING, _NAME_QUEUE);
 
-            }, new MessageHandlerOptions((E) =>
-            {
-                Console.WriteLine(E.Exception.Message);
-                return Task.CompletedTask;
-            })
-            {
-                AutoComplete = true,
-            });
-            while (true)
-            {
-                Thread.Sleep(1000);
+                _Queue.RegisterMessageHandler((Microsoft.Azure.ServiceBus.Message M, CancellationToken C) =>
+                {
+                    string Body = Encoding.UTF8.GetString(M.Body);
+                    Console.WriteLine(Body);
+
+                    return Task.CompletedTask;
+
+                }, new MessageHandlerOptions((E) =>
+                {
+                    Console.WriteLine(E.Exception.Message);
+                    return Task.CompletedTask;
+                })
+                {
+                    AutoComplete = true,
+                });
+                while (true)
+                {
+                    Thread.Sleep(1000);
+                }
+                
             }
+            _Container.Dispose();
         }
 
         public static void Initialize()
         {
             _Container = new Container();
-            _Container.Options.DefaultScopedLifestyle = Lifestyle.CreateHybrid(
-                defaultLifestyle: new ThreadScopedLifestyle(),
-                fallbackLifestyle: new WebRequestLifestyle());
+            _Container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
+
 
             InitializeContainer(_Container);
 
