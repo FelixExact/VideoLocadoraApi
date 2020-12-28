@@ -8,7 +8,7 @@ namespace FD.Videolocadora.Api
         public static void Register(HttpConfiguration config)
         {
             // Serviços e configuração da API da Web
-
+            config.MessageHandlers.Add(new Authenticate());
             // Rotas da API da Web
             config.MapHttpAttributeRoutes();
 
@@ -16,7 +16,8 @@ namespace FD.Videolocadora.Api
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
+                //handler: new Authenticate()
+            ) ;
 
 
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
