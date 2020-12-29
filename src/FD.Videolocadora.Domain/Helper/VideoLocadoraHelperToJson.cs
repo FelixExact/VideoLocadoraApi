@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FD.Videolocadora.Domain.Helper
 {
-    public static class StackExchangeRedisExtension
+    public static class VideoLocadoraHelperToJson
     {
         public static string ToJson(object value)
         {

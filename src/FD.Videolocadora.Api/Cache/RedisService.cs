@@ -39,7 +39,7 @@ namespace FD.Videolocadora.Api.Cache
 
         public void SetCache(string key, object value)
         {
-            var valueString = StackExchangeRedisExtension.ToJson(value);
+            var valueString = VideoLocadoraHelperToJson.ToJson(value);
             GetRedisCache().StringSet(key, valueString);
         }
 
