@@ -1,4 +1,5 @@
 ﻿using FD.Videolocadora.Domain.Entities;
+using FD.Videolocadora.Domain.Helper;
 using System;
 
 namespace FD.Videolocadora.Application.Models

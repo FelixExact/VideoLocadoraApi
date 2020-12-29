@@ -2,7 +2,10 @@
 using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.Application.Models;
 using FD.Videolocadora.Domain.Entities;
+using FD.Videolocadora.Domain.Helper;
+using Microsoft.Azure.ServiceBus;
 using System;
+using System.Text;
 using System.Web.Http;
 
 namespace FD.Videolocadora.Api.Controllers
@@ -11,7 +14,9 @@ namespace FD.Videolocadora.Api.Controllers
     {
         private readonly IGeneroAppService _generoAppService;
         private readonly ICache _cache ;
-
+        private const string _CONNECTION_STRING = "Endpoint=sb://spottermessagebusdev.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=qhv+vddxzeoK0KFj7xMWovjvXKUEIzyjcRHYfQbNSus=";
+        private const string _NAME_QUEUE = "treinamento_felix";
+        static QueueClient _Queue;
 
         public GeneroController(IGeneroAppService generoAppService, ICache cache)
         {
@@ -23,10 +28,10 @@ namespace FD.Videolocadora.Api.Controllers
         {
             try
             {
-                _cache.SetCache("teste1", _generoAppService.ObterTodos());
-                var a = _cache.GetCache("teste1");
-                return Ok(a);
-                //_generoAppService.ObterTodos()
+                //_cache.SetCache("teste1", _generoAppService.ObterTodos());
+                //var a = _cache.GetCache("teste1");
+
+                return Ok(_generoAppService.ObterTodos());
             }
             catch (Exception e)
             {
@@ -56,7 +61,13 @@ namespace FD.Videolocadora.Api.Controllers
                 if (value == null) { throw new Exception("Json invalido."); }
 
                 Genero g = value.ToEntity();
-                _generoAppService.Adicionar(g);
+                //--------   Service Bus
+                var message = new Message(Encoding.Default.GetBytes(StackExchangeRedisExtension.ToJson(g)));
+                _Queue = new QueueClient(_CONNECTION_STRING, _NAME_QUEUE);
+
+                _Queue.SendAsync(message);
+                //--------
+                //_generoAppService.Adicionar(g);
                 return Ok();
             }
             catch (Exception e)

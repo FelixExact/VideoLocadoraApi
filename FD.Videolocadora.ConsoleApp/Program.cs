@@ -1,12 +1,13 @@
-﻿using FD.Videolocadora.Application.Interfaces;
+﻿using FD.Videolocadora.Application;
+using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.CrossCutting.IoC;
+using FD.Videolocadora.Domain.Entities;
+using FD.Videolocadora.Domain.Helper;
 using Microsoft.Azure.ServiceBus;
+using Newtonsoft.Json;
 using SimpleInjector;
-using SimpleInjector.Integration.Web;
 using SimpleInjector.Lifestyles;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,6 +34,10 @@ namespace FD.Videolocadora.ConsoleApp
                 {
                     string Body = Encoding.UTF8.GetString(M.Body);
                     Console.WriteLine(Body);
+                    Genero g = JsonConvert.DeserializeObject<Genero>(Body);
+                    genero.Adicionar(g);
+                    Console.WriteLine(g);
+
 
                     return Task.CompletedTask;
 
@@ -46,7 +51,7 @@ namespace FD.Videolocadora.ConsoleApp
                 });
                 while (true)
                 {
-                    Thread.Sleep(1000);
+                    Thread.Sleep(10000);
                 }
             }
         }
