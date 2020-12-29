@@ -48,9 +48,7 @@ namespace FD.Videolocadora.ConsoleApp
                 {
                     Thread.Sleep(1000);
                 }
-                
             }
-            _Container.Dispose();
         }
 
         public static void Initialize()
