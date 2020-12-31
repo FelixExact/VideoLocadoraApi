@@ -13,7 +13,7 @@ namespace FD.Videolocadora.Api.Controllers
     public class GeneroController : ApiController
     {
         private readonly IGeneroAppService _generoAppService;
-        private readonly ICache _cache ;
+        private readonly ICache _cache;
         private const string _CONNECTION_STRING = "Endpoint=sb://spottermessagebusdev.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=qhv+vddxzeoK0KFj7xMWovjvXKUEIzyjcRHYfQbNSus=";
         private const string _NAME_QUEUE = "treinamento_felix";
         static QueueClient _Queue;
@@ -62,7 +62,7 @@ namespace FD.Videolocadora.Api.Controllers
 
                 Genero g = value.ToEntity();
                 //--------   Service Bus
-                var message = new Message(Encoding.Default.GetBytes(StackExchangeRedisExtension.ToJson(g)));
+                var message = new Message(Encoding.Default.GetBytes(VideoLocadoraHelperToJson.ToJson(g)));
                 _Queue = new QueueClient(_CONNECTION_STRING, _NAME_QUEUE);
 
                 _Queue.SendAsync(message);

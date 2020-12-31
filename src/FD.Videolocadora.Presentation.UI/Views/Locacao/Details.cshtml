@@ -1,0 +1,47 @@
+﻿@model FD.Videolocadora.Presentation.UI.Models.LocacaoModelView
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Locacao</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Filme)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Filme)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Usuario)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataDevolucao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataDevolucao)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.LocacaoId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

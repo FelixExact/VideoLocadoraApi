@@ -17,7 +17,7 @@ namespace FD.Videolocadora.Api
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
                 //handler: new Authenticate()
-            ) ;
+            );
 
 
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");

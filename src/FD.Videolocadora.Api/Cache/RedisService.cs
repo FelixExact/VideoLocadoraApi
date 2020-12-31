@@ -1,8 +1,7 @@
-﻿using StackExchange.Redis;
+﻿using FD.Videolocadora.Domain.Helper;
+using StackExchange.Redis;
 using System;
 using System.Configuration;
-using Newtonsoft.Json;
-using FD.Videolocadora.Domain.Helper;
 
 namespace FD.Videolocadora.Api.Cache
 {
@@ -49,6 +48,6 @@ namespace FD.Videolocadora.Api.Cache
         }
 
 
-     
+
     }
 }

@@ -1,8 +1,6 @@
-﻿using FD.Videolocadora.Application;
-using FD.Videolocadora.Application.Interfaces;
+﻿using FD.Videolocadora.Application.Interfaces;
 using FD.Videolocadora.CrossCutting.IoC;
 using FD.Videolocadora.Domain.Entities;
-using FD.Videolocadora.Domain.Helper;
 using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
 using SimpleInjector;
@@ -69,7 +67,7 @@ namespace FD.Videolocadora.ConsoleApp
             _Container.Verify();
 
             //GlobalConfiguration.Configuration.DependencyResolver =
-             //   new SimpleInjectorWebApiDependencyResolver(container);
+            //   new SimpleInjectorWebApiDependencyResolver(container);
 
         }
 

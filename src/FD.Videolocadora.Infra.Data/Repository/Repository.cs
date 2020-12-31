@@ -54,7 +54,10 @@ namespace FD.Videolocadora.Infra.Data.Repository
         public virtual void Remover(Guid id)
         {
             TEntity Remo = ObterPorId(id);
-            DbSet.Remove(Remo);
+
+            var entry = Db.Entry(Remo);
+            DbSet.Attach(Remo);
+            entry.State = EntityState.Deleted;
             Db.SaveChanges();
         }
 

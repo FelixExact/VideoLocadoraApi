@@ -48,7 +48,7 @@
     <Compile Include="Entities\Genero.cs" />
     <Compile Include="Entities\Locacao.cs" />
     <Compile Include="Entities\Usuario.cs" />
-    <Compile Include="Helper\StackExchangeRedisExtension.cs" />
+    <Compile Include="Helper\VideoLocadoraHelperToJson.cs" />
     <Compile Include="Interfaces\Repository\ILocacaoRepository.cs" />
     <Compile Include="Interfaces\Repository\IRepository.cs" />
     <Compile Include="Interfaces\Services\IEntityService.cs" />
