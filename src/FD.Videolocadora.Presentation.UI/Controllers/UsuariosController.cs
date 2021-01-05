@@ -14,12 +14,14 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             _appService = appService;
         }
 
+        [Authorize]
         // GET: Usuarios
         public ActionResult Index()
         {
             return View(_appService.ObterTodos()); ;
         }
 
+        [Authorize]
         // GET: Usuarios/Details/5
         public ActionResult Details(Guid id)
         {
@@ -35,12 +37,14 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(usuario);
         }
 
+        [Authorize]
         // GET: Usuarios/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         // POST: Usuarios/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -57,6 +61,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(usuario);
         }
 
+        [Authorize]
         // GET: Usuarios/Edit/5
         public ActionResult Edit(Guid id)
         {
@@ -72,6 +77,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(usuario);
         }
 
+        [Authorize]
         // POST: Usuarios/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -87,6 +93,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(usuario);
         }
 
+        [Authorize]
         // GET: Usuarios/Delete/5
         public ActionResult Delete(Guid id)
         {
@@ -102,6 +109,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(usuario);
         }
 
+        [Authorize]
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

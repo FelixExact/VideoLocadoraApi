@@ -17,6 +17,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             _appService = appService;
         }
 
+        [Authorize]
         // GET: Filmes
         public ActionResult Index()
         {
@@ -37,6 +38,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(j);
         }
 
+        [Authorize]
         // GET: Filmes/Details/5
         public ActionResult Details(Guid id)
         {
@@ -52,12 +54,14 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(filme);
         }
 
+        [Authorize]
         // GET: Filmes/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         // POST: Filmes/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -74,6 +78,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(filme);
         }
 
+        [Authorize]
         // GET: Filmes/Edit/5
         public ActionResult Edit(Guid id)
         {
@@ -97,6 +102,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(a);
         }
 
+        [Authorize]
         // POST: Filmes/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -112,6 +118,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(filme);
         }
 
+        [Authorize]
         // GET: Filmes/Delete/5
         public ActionResult Delete(Guid id)
         {
@@ -127,6 +134,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(filme);
         }
 
+        [Authorize]
         // POST: Filmes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

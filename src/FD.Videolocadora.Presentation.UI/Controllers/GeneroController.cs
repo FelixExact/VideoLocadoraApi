@@ -14,6 +14,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
         {
             _generoAppService = generoAppService;
         }
+
         [Authorize]
         // GET: Genero
         public ActionResult Index()
@@ -21,6 +22,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(_generoAppService.ObterTodos());
         }
 
+        [Authorize]
         // GET: Genero/Details/5
         public ActionResult Details(Guid id)
         {
@@ -36,12 +38,14 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(genero);
         }
 
+        [Authorize]
         // GET: Genero/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         // POST: Genero/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -58,6 +62,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(genero);
         }
 
+        [Authorize]
         // GET: Genero/Edit/5
         public ActionResult Edit(Guid id)
         {
@@ -73,6 +78,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(genero);
         }
 
+        [Authorize]
         // POST: Genero/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -88,6 +94,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(genero);
         }
 
+        [Authorize]
         // GET: Genero/Delete/5
         public ActionResult Delete(Guid id)
         {
@@ -103,6 +110,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(genero);
         }
 
+        [Authorize]
         // POST: Genero/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

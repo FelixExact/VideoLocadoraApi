@@ -22,6 +22,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             _appServiceUsuario = appServiceUsuario;
         }
 
+        [Authorize]
         // GET: Locacao
         public ActionResult Index()
         {
@@ -46,6 +47,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(locacaos.ToList());
         }
 
+        [Authorize]
         // GET: Locacao/Details/5
         public ActionResult Details(Guid id)
         {
@@ -61,12 +63,14 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(l);
         }
 
+        [Authorize]
         // GET: Locacao/Create
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         // POST: Locacao/Create
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -81,6 +85,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(locacao);
         }
 
+        [Authorize]
         // GET: Locacao/Edit/5
         public ActionResult Edit(Guid id)
         {
@@ -96,6 +101,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(l);
         }
 
+        [Authorize]
         // POST: Locacao/Edit/5
         // Para proteger-se contra ataques de excesso de postagem, ative as propriedades específicas às quais deseja se associar. 
         // Para obter mais detalhes, confira https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -108,6 +114,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View();
         }
 
+        [Authorize]
         // GET: Locacao/Delete/5
         public ActionResult Delete(Guid id)
         {
@@ -124,6 +131,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(l);
         }
 
+        [Authorize]
         // POST: Locacao/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -135,6 +143,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
 
 
 
+        [Authorize]
         public LocacaoModelView locacaoForlocacaoModel(Guid id)
         {
             Locacao locacao = _appService.ObterPorId(id);
@@ -151,6 +160,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return l;
         }
 
+        [Authorize]
         public Locacao locacaoModelForLocacao(LocacaoModelView locacaoModelView)
         {
 
