@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Threading.Tasks;
 using System.Web;
@@ -46,6 +47,16 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
                 _signInManager = value;
             }
         }
+
+        public IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                var contexoOwin = Request.GetOwinContext();
+                return contexoOwin.Authentication;
+            }
+        }
+
         public ActionResult Registrar()
         {
             return View();
@@ -113,8 +124,12 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
             return View(modelo);
         }
 
-
-
+        [HttpPost]
+        public ActionResult Logoff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
+        }
 
 
 
