@@ -14,6 +14,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
         {
             _generoAppService = generoAppService;
         }
+        [Authorize]
         // GET: Genero
         public ActionResult Index()
         {

@@ -1,0 +1,12 @@
+﻿@model FD.Videolocadora.Presentation.UI.Models.ContaLoginViewModel
+
+<h2>Fazer Login</h2> 
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary("",new { @class = "text-danger" })
+
+    @Html.EditorForModel()
+
+    <input type="submit" value="fazer login!"/>
+}

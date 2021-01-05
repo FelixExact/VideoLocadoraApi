@@ -1,11 +1,12 @@
 ﻿using FD.Videolocadora.Domain.Entities;
 using FD.Videolocadora.Infra.Data.EntityConfig;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace FD.Videolocadora.Infra.Data.Context
 {
-    public class VideolocadoraContext : DbContext
+    public class VideolocadoraContext : IdentityDbContext
     {
         public VideolocadoraContext() : base("Videolocadora1")
         {
