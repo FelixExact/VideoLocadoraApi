@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<FD.Videolocadora.Domain.Entities.Usuario>
-
+@using FD.Videolocadora.Presentation.UI.Internacionalizacao
 
 
 <!DOCTYPE html>
@@ -16,19 +16,19 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Mensagens.Nome
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CPF)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco)
+                @Mensagens.Endereco
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DataNascimento)
+                @Mensagens.DataNascimento
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ativo)
+                @Mensagens.Ativo
             </th>
             <th></th>
         </tr>

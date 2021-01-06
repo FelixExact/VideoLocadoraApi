@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<FD.Videolocadora.Domain.Entities.Genero>
-
+@using FD.Videolocadora.Presentation.UI.Internacionalizacao
 
 <!DOCTYPE html>
 
@@ -10,12 +10,12 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Cadastrar", "Create")
+        @Html.ActionLink(Mensagens.Cadastrar, "Create")
     </p>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Mensagens.Genero
             </th>
             <th></th>
         </tr>
@@ -26,9 +26,9 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.GeneroId }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.GeneroId }) |
-                @Html.ActionLink("Apagar", "Delete", new { id=item.GeneroId })
+                @Html.ActionLink(Mensagens.Editar, "Edit", new { id=item.GeneroId }) |
+                @Html.ActionLink(Mensagens.Detalhes, "Details", new { id=item.GeneroId }) |
+                @Html.ActionLink(Mensagens.Deletar, "Delete", new { id=item.GeneroId })
             </td>
         </tr>
     }

@@ -185,6 +185,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Internacionalizacao\Mensagens.en-us.Designer.cs">
+      <DependentUpon>Mensagens.en-us.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Internacionalizacao\Mensagens.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mensagens.resx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ContaLoginViewModel.cs" />
     <Compile Include="Models\ContaRegistrarViewModel.cs" />
     <Compile Include="Models\FilmeModelView.cs" />
@@ -225,8 +235,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Genero\Create.cshtml" />
     <Content Include="Views\Genero\Delete.cshtml" />
@@ -281,6 +289,16 @@
       <Project>{cc6d8701-71c5-4a8a-b72b-5d2543ce24d7}</Project>
       <Name>FD.Videolocadora.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Internacionalizacao\Mensagens.en-us.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mensagens.en-us.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Internacionalizacao\Mensagens.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mensagens.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

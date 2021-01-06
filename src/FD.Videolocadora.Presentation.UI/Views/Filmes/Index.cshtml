@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<FD.Videolocadora.Presentation.UI.Models.FilmeModelView>
+@using FD.Videolocadora.Presentation.UI.Internacionalizacao
 
 
 
@@ -16,36 +17,37 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Mensagens.Filme
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Valor)
+                @Mensagens.valor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Disponivel)
+                @Mensagens.Disponivel
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Disponivel)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.FilmeId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.FilmeId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.FilmeId })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disponivel)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.FilmeId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.FilmeId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FilmeId })
+                </td>
+            </tr>
+        }
+
     </table>
 </body>
 </html>

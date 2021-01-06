@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-
+@using FD.Videolocadora.Presentation.UI.Internacionalizacao
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,13 +19,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Locações da Videolocadora", "Index", "locacao", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(Mensagens.LocaçõesdaVideolocadora, "Index", "locacao", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Generos", "Index", "Genero")</li>
-                    <li>@Html.ActionLink("Filmes", "Index", "Filmes")</li>
-                    <li>@Html.ActionLink("Usuarios", "Index", "Usuarios")</li>
+                    <li>@Html.ActionLink(Mensagens.Genero, "Index", "Genero");</li>
+                    <li>@Html.ActionLink(Mensagens.Filme, "Index", "Filmes")</li>
+                    <li>@Html.ActionLink(Mensagens.Usuario, "Index", "Usuarios")</li>
                 </ul>
 
                 <ul class="nav navnavbar-nav navbar-right">
@@ -37,17 +37,17 @@
                         }
 
                         <ul class="nav navnavbar-nav navbar-right">
-                            <li><p class="navbar-text">Olá, @User.Identity.GetUserName() </p></li>
+                            <li><p class="navbar-text">@Mensagens.Ola, @User.Identity.GetUserName() </p></li>
                         </ul>
                         <ul class="nav navnavbar-nav navbar-right">
-                            <li> <a href="javascript:document.getElementById('formulario_logoff').submit()">Logoff</a></li>
+                            <li> <a href="javascript:document.getElementById('formulario_logoff').submit()">@Mensagens.Sair</a></li>
                         </ul>
 
                     }
                     else
                     {
                         <ul class="nav navnavbar-nav navbar-right">
-                            <li>@Html.ActionLink("Registrar", "Registrar", "Conta")</li>
+                            <li>@Html.ActionLink(Mensagens.Cadastrar, "Registrar", "Conta")</li>
                         </ul>
                         <ul class="nav navnavbar-nav navbar-right">
                             <li class="icon-bar">@Html.ActionLink("Login", "Login", "Conta")</li>
