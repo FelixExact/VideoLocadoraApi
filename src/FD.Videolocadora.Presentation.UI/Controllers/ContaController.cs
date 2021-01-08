@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -78,7 +79,16 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
                 var resultado = await UserManager.CreateAsync(novoUsuario, modelo.Senha);
                 if (resultado.Succeeded)
                 {
+                    Thread thread = new Thread(() => {
+                        var novoUsuario1 = novoUsuario;
+                        Thread.Sleep(15000);
+                        Task<string>.Run(async () => await new EmailSender().SendAsyncNew(novoUsuario1.Email,
+                            "teste 15 sec", "teste 15 sec",
+                            "teste 15 sec")).Wait();
+
+                    });
                     await EnviarEmailDeConfirmacaoAsync(novoUsuario);
+                    thread.Start();
                     //return View("AguardandoConfirmacao");
                     return RedirectToAction("Index", "Home");
                 }
