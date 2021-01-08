@@ -39,11 +39,12 @@ namespace FD.Videolocadora.Infra.Data.Repository
 
         public override Locacao ObterPorId(Guid id)
         {
-            var cn = Db.Database.Connection;
-
-            var sql = @"SELECT * FROM Locacoes c " +
-                       "WHERE c.LocacaoId = @sid";
-            return cn.Query<Locacao>(sql, new { sid = id }).FirstOrDefault();
+            //var cn = Db.Database.Connection;
+            //
+            //var sql = @"SELECT * FROM Locacoes c " +
+            //           "WHERE c.LocacaoId = @sid";
+            //return cn.Query<Locacao>(sql, new { sid = id }).FirstOrDefault();
+            return DbSet.Find(id);
 
         }
         public override void Remover(Guid id)

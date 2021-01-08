@@ -1,4 +1,5 @@
-﻿using FD.Videolocadora.Presentation.UI.Models;
+﻿using Exact.Libs.EmailSender;
+using FD.Videolocadora.Presentation.UI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -77,7 +78,7 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
                 var resultado = await UserManager.CreateAsync(novoUsuario, modelo.Senha);
                 if (resultado.Succeeded)
                 {
-                    //await EnviarEmailDeConfirmacaoAsync(novoUsuario);
+                    await EnviarEmailDeConfirmacaoAsync(novoUsuario);
                     //return View("AguardandoConfirmacao");
                     return RedirectToAction("Index", "Home");
                 }
@@ -154,15 +155,26 @@ namespace FD.Videolocadora.Presentation.UI.Controllers
                     "Conta",
                     new { usuarioId = usuario.Id, token = token },
                         Request.Url.Scheme);
+            Task<string>.Run(async () => await new EmailSender().SendAsyncNew(usuario.Email, "Bem-vindo ao sistema videolocadora da exact TESTE", "Bem-vindo a videolocadora exact", $"Seja muito bem vindo ao sistema de Videolocadora da exact, clique aqui {linkDeCallback} para confirmar seu email!")).Wait();
 
-            await UserManager.SendEmailAsync(
-                usuario.Id,
-                "Confirmação de cadastro",
-                $"Bem vindo ao fórum ByteBank, clique aqui {linkDeCallback} para confirmar seu email!");
         }
 
-        public ActionResult ConfirmacaoEmail(string usuarioId, string token)
+        public async Task<ActionResult>  ConfirmacaoEmail(string usuarioId, string token)
         {
+            if (usuarioId == null || token == null)
+                return View("error");
+
+            var resultado = await UserManager.ConfirmEmailAsync(usuarioId, token);
+
+            if (resultado.Succeeded)
+            {
+                return View("login", "Home" );
+            }
+            else 
+            {
+                return View("error");
+            }
+
             throw new NotImplementedException();
         }
 

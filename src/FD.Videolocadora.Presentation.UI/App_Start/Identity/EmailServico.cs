@@ -34,6 +34,8 @@ namespace FD.Videolocadora.Presentation.UI.App_Start.Identity
                     await smtpClient.SendMailAsync(mensagemDeEmail);
                 }
             }
+
+            
             throw new NotImplementedException();
         }
     }
